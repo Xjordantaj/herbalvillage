@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<!--
+  =====================  PRODUCT LIST  =====================
+  One product per line. To show a picture, change the path in the
+  "image" part at the END of the product line, for example:
+      "image": "images/prunus.jpg"
+  Keep all the quote marks and commas exactly as they are.
+  Put the picture files in the folder called images.
+  =========================================================
+-->
+<script type="application/json" id="hv-data">
+{"sample": false, "products": [
+{"id": "p-sample-1", "name": "prunus", "category": "prostate relief", "desc": "Herbal product. Ask our pharmacist e8wet8twetwrgggd9 7edyye777yew8   ye777uuuuuuuugbcbabout use and pack sizes.", "price": 28000, "inStock": true, "kind": "box", "image": "images/prunus.jpg"},
+{"id": "p-sample-2", "name": "gyno formula", "category": "for women", "desc": "Ask us which syrup suitsfdrdrdrddyrrttrdturdtrdtrdytrdytudrdrdtrdurddur  durdrdrdrdurdurdutrdurrdytdiytitdytdydytytdytytf a dry or a chesty cough.", "price": null, "inStock": true, "kind": "syrup", "image": "images/gyno formula.jpg"},
+{"id": "p-sample-3", "name": "Oral rehydration salts", "category": "Stomach and digestion", "desc": "Sachets to mix with clean water.", "price": null, "inStock": true, "kind": "box", "image": "images/oral-rehydration-salts.jpg"},
+{"id": "p-sample-4", "name": "Herbal tea blend", "category": "Herbal and wellness", "desc": "A caffeine-free blend for daily use.", "price": null, "inStock": true, "kind": "herb", "image": "images/herbal-tea-blend.jpg"},
+{"id": "p-sample-5", "name": "Adhesive bandages", "category": "First aid", "desc": "Assorted sizes for small cuts and scrapes.", "price": null, "inStock": true, "kind": "bandage", "image": "images/adhesive-bandages.jpg"},
+{"id": "p-sample-6", "name": "Antiseptic solution", "category": "First aid", "desc": "For cleaning minor cuts and grazes.", "price": null, "inStock": true, "kind": "bottle", "image": "images/antiseptic-solution.jpg"},
+{"id": "p-7", "name": "Paracetamol tablets", "category": "Pain relief", "desc": "For headache, body ache and fever. Ask which pack size is in stock.", "price": null, "inStock": true, "kind": "bottle", "image": "images/paracetamol-tablets.jpg"},
+{"id": "p-8", "name": "Ibuprofen tablets", "category": "Pain relief", "desc": "For pain and inflammation. Take with food and ask us if unsure.", "price": null, "inStock": true, "kind": "bottle", "image": "images/ibuprofen-tablets.jpg"},
+{"id": "p-9", "name": "Throat lozenges", "category": "Cold and flu", "desc": "To soothe a sore, scratchy throat.", "price": null, "inStock": true, "kind": "box", "image": "images/throat-lozenges.jpg"},
+{"id": "p-10", "name": "Saline nasal spray", "category": "Cold and flu", "desc": "Helps clear a blocked or stuffy nose.", "price": null, "inStock": true, "kind": "bottle", "image": "images/nasal-spray.jpg"},
+{"id": "p-11", "name": "Antacid tablets", "category": "Stomach and digestion", "desc": "Chewable tablets for heartburn and indigestion.", "price": null, "inStock": true, "kind": "box", "image": "images/antacid-tablets.jpg"},
+{"id": "p-12", "name": "Vitamin C tablets", "category": "Vitamins and supplements", "desc": "Daily vitamin C support for the whole family.", "price": null, "inStock": true, "kind": "bottle", "image": "images/vitamin-c.jpg"},
+{"id": "p-13", "name": "Multivitamin capsules", "category": "Vitamins and supplements", "desc": "A daily multivitamin. Ask us which one suits adults or children.", "price": null, "inStock": true, "kind": "bottle", "image": "images/multivitamin.jpg"},
+{"id": "p-14", "name": "Moringa leaf powder", "category": "Herbal and wellness", "desc": "Dried moringa leaf, ground fine to add to food or drinks.", "price": null, "inStock": true, "kind": "herb", "image": "images/moringa-powder.jpg"},
+{"id": "p-15", "name": "Aloe vera gel", "category": "Skin care", "desc": "A cooling gel for dry or sun-tired skin.", "price": null, "inStock": true, "kind": "herb", "image": "images/aloe-vera-gel.jpg"},
+{"id": "p-16", "name": "Petroleum jelly", "category": "Skin care", "desc": "Protects dry, cracked skin and lips.", "price": null, "inStock": true, "kind": "box", "image": "images/petroleum-jelly.jpg"},
+{"id": "p-17", "name": "Gauze rolls and medical tape", "category": "First aid", "desc": "For dressing larger wounds. Sold with or without tape.", "price": null, "inStock": true, "kind": "bandage", "image": "images/gauze-and-tape.jpg"}
+]}
+</script>
+<title>Herbal Village</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Nunito+Sans:wght@400;600;700&display=swap">
+<style>
+/* Layout: one deep-green hero panel (name, promise, live open/closed status), then plain light sections for services, products, weekly hours and contact. Boldness lives in the headline type. */
+:root {
+  --bg: #F4F8EE;
+  --surface: #FFFFFF;
+  --fg: #16261E;
+  --muted: #53665B;
+  --line: #D6E1CE;
+  --soft: #E5EEDC;
+  --panel: #1E5A3E;
+  --on-panel: #F4F8EE;
+  --panel-muted: #BCD6C5;
+  --leaf: #8FCFA9;
+  --gold: #E8A913;
+  --on-gold: #2B1F00;
+  --action: #1E5A3E;
+  --on-action: #F4F8EE;
+  --ok: #1F7A48;
+  --off: #8A4B2D;
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --gutter: 20px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1A14; --surface: #17261E; --fg: #E6EFE3; --muted: #9DB2A4; --line: #28392F; --soft: #1C2E24;
+    --panel: #173C2A; --on-panel: #EEF5EA; --panel-muted: #A9C8B5; --leaf: #6FBE92;
+    --gold: #EDB02A; --on-gold: #2B1F00; --action: #7FD3A7; --on-action: #0E1B14; --ok: #6FD09B; --off: #E0A07E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1A14; --surface: #17261E; --fg: #E6EFE3; --muted: #9DB2A4; --line: #28392F; --soft: #1C2E24;
+  --panel: #173C2A; --on-panel: #EEF5EA; --panel-muted: #A9C8B5; --leaf: #6FBE92;
+  --gold: #EDB02A; --on-gold: #2B1F00; --action: #7FD3A7; --on-action: #0E1B14; --ok: #6FD09B; --off: #E0A07E;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  padding-inline: var(--gutter); padding-block: 0 32px;
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.08; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1080px; margin-inline: auto; }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+/* header */
+header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 20px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 22px; text-decoration: none; letter-spacing: -.01em; }
+.brand svg { width: 30px; height: 30px; flex: none; }
+nav { display: flex; flex-wrap: wrap; gap: 4px 22px; font-weight: 600; font-size: 15px; }
+nav a { text-decoration: none; padding-block: 6px; border-bottom: 2px solid transparent; }
+nav a:hover { border-bottom-color: var(--gold); }
+
+/* hero */
+.hero { background: var(--panel); color: var(--on-panel); border-radius: 28px; padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 32px 48px; align-items: center; }
+.hero .eyebrow { color: var(--gold); }
+.hero h1 { font-size: clamp(2.5rem, 6.4vw, 4.6rem); font-weight: 700; letter-spacing: -.03em; margin-top: 14px; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero .lede { font-size: 1.12rem; color: var(--panel-muted); max-width: 34ch; margin-top: 20px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 16px; text-decoration: none; border: 2px solid transparent; font-family: var(--font-body); cursor: pointer; }
+.btn-gold { background: var(--gold); color: var(--on-gold); }
+.btn-gold:hover { filter: brightness(1.06); }
+.btn-ghost { border-color: var(--panel-muted); color: var(--on-panel); background: transparent; }
+.btn-ghost:hover { background: rgba(255,255,255,.08); }
+.hero-side { display: flex; flex-direction: column; gap: 18px; align-items: stretch; min-width: 0; }
+.sprig { width: 120px; height: auto; align-self: center; }
+.sprig .stem { stroke: var(--leaf); fill: none; stroke-width: 4; stroke-linecap: round; }
+.sprig .l1 { fill: var(--leaf); }
+.sprig .l2 { fill: var(--gold); }
+.today { background: var(--surface); color: var(--fg); border-radius: 20px; padding: 22px 22px 20px; }
+.today .eyebrow { color: var(--muted); }
+.status { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.55rem; margin-top: 8px; line-height: 1.15; }
+.dot { width: 14px; height: 14px; border-radius: 50%; background: var(--ok); flex: none; box-shadow: 0 0 0 5px color-mix(in srgb, var(--ok) 22%, transparent); }
+.status[data-state="closed"] .dot { background: var(--off); box-shadow: 0 0 0 5px color-mix(in srgb, var(--off) 22%, transparent); }
+.today p.sub { color: var(--muted); font-size: 15px; margin-top: 6px; }
+.today .where { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 15px; }
+
+/* sections */
+section { padding-block: clamp(48px, 8vw, 88px) 0; }
+.sec-head { display: flex; flex-direction: column; gap: 10px; max-width: 46ch; }
+.sec-head .eyebrow { color: var(--ok); }
+.sec-head h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 700; letter-spacing: -.02em; }
+.sec-head p { color: var(--muted); }
+
+.services { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+.services li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 4px 16px; padding-block: 22px; border-top: 1px solid var(--line); }
+.services .ico { width: 40px; height: 40px; border-radius: 12px; background: var(--soft); display: grid; place-items: center; grid-row: span 2; }
+.services .ico svg { width: 22px; height: 22px; fill: var(--ok); }
+.services h3 { font-size: 1.2rem; font-weight: 650; letter-spacing: -.01em; }
+.services p { color: var(--muted); font-size: 16px; }
+
+/* products */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.chip { font-family: var(--font-body); font-weight: 700; font-size: 14.5px; min-height: 40px; padding: 6px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+.chip:hover { background: var(--soft); }
+.chip[aria-pressed="true"] { background: var(--action); border-color: var(--action); color: var(--on-action); }
+.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px; margin-top: 20px; }
+.pcard { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.pcard .cat { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ok); }
+.pcard h3 { font-size: 1.15rem; font-weight: 650; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.pcard .desc { color: var(--muted); font-size: 15px; flex: 1; overflow-wrap: anywhere; }
+.pcard .meta { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--line); }
+.price { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.price.ask { font-family: var(--font-body); font-weight: 600; font-size: 14.5px; color: var(--muted); }
+.stock { font-size: 13px; font-weight: 700; color: var(--ok); }
+.pcard.oos { background: transparent; border-style: dashed; }
+.pcard.oos .stock { color: var(--off); }
+.pcard.oos h3, .pcard.oos .price { color: var(--muted); }
+.pempty { grid-column: 1 / -1; padding: 28px; border: 1.5px dashed var(--line); border-radius: 16px; color: var(--muted); }
+
+.pimg { aspect-ratio: 4 / 3; max-width: 100%; border-radius: 12px; background: var(--soft); display: grid; place-items: center; margin-bottom: 8px; }
+.pimg { overflow: hidden; }
+.pimg svg { width: 46%; height: auto; max-height: 82%; }
+.pimg img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.thumb { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); }
+.pcard.oos .pimg { opacity: .6; }
+.ph-a { fill: var(--ok); }
+.ph-b { fill: var(--gold); }
+.ph-c { fill: var(--surface); }
+.ph-line { stroke: var(--ok); fill: none; stroke-width: 3; stroke-linecap: round; }
+
+/* owner editing */
+.owner-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin-top: 24px; padding: 14px 18px; border-radius: 16px; background: var(--soft); }
+.owner-bar p { font-size: 15px; }
+.notice { margin-top: 16px; padding: 12px 16px; border-radius: 12px; background: var(--surface); border-left: 5px solid var(--gold); font-size: 15px; }
+.editor { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+.erow { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px; }
+.fld { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.fld.wide { grid-column: 1 / -1; }
+.fld label { font-size: 12.5px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+.fld select, .fld input[type="text"], .fld input[type="number"] { font-family: var(--font-body); font-size: 16px; min-height: 44px; padding: 8px 12px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--bg); color: var(--fg); width: 100%; }
+.erow-foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.check { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15.5px; min-height: 40px; }
+.check input { width: 20px; height: 20px; accent-color: var(--action); }
+.editor-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+.msg { font-size: 15px; color: var(--muted); }
+.msg.err { color: var(--off); font-weight: 600; }
+
+/* hours */
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; margin-top: 32px; }
+.day { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.day .name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+.day .t { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; line-height: 1.35; }
+.day.closed { background: transparent; border-style: dashed; }
+.day.closed .name { color: var(--muted); }
+.day.today-d { border: 2px solid var(--gold); background: var(--surface); }
+.day .tag { display: none; }
+.day.today-d .tag { display: inline-block; align-self: flex-start; background: var(--gold); color: var(--on-gold); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-top: 4px; }
+.tz { margin-top: 14px; font-size: 14px; color: var(--muted); }
+
+/* contact */
+.contact { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+.c-item { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.c-item .eyebrow { color: var(--muted); }
+.c-value { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; letter-spacing: -.01em; overflow-wrap: anywhere; user-select: all; }
+.c-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.btn-sm { min-height: 40px; padding: 6px 16px; font-size: 14.5px; }
+.btn-solid { background: var(--action); color: var(--on-action); }
+.btn-solid:hover { filter: brightness(1.08); }
+.btn-solid[disabled] { opacity: .6; cursor: default; }
+.btn-line { border-color: var(--line); background: transparent; color: var(--fg); }
+.btn-line:hover { background: var(--soft); }
+.btn-danger { border-color: var(--line); background: transparent; color: var(--off); }
+.btn-danger:hover { background: var(--soft); }
+
+footer { margin-top: clamp(48px, 8vw, 88px); padding-top: 24px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 32px; font-size: 14px; color: var(--muted); }
+footer p { max-width: 58ch; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .sprig { display: none; }
+  .services { grid-template-columns: minmax(0, 1fr); }
+  .contact { grid-template-columns: minmax(0, 1fr); }
+  .week { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .erow { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  body { font-size: 16px; }
+  .hero .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero { animation: rise .6s ease both; }
+  @keyframes rise { from { opacity: .001; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="leaf" viewBox="0 0 24 24"><path d="M20.5 3.5C11 3.5 4.5 8 4.5 15.2c0 1.1.2 2.1.6 3L3 20.8l1.4 1.2 2.2-2.2c.9.4 1.9.6 3 .6C17.6 20.4 20.5 12.5 20.5 3.5Z"/></symbol>
+  <symbol id="ph-bottle" viewBox="0 0 80 80"><rect class="ph-b" x="26" y="8" width="28" height="12" rx="4"/><rect class="ph-a" x="22" y="20" width="36" height="52" rx="8"/><rect class="ph-c" x="27" y="32" width="26" height="26" rx="3"/><path class="ph-line" d="M40 38v14M33 45h14"/></symbol>
+  <symbol id="ph-syrup" viewBox="0 0 80 80"><rect class="ph-b" x="31" y="6" width="18" height="10" rx="3"/><rect class="ph-a" x="34" y="16" width="12" height="12" rx="2"/><rect class="ph-a" x="20" y="26" width="40" height="46" rx="10"/><rect class="ph-c" x="25" y="38" width="30" height="24" rx="3"/><path class="ph-line" d="M40 43v14M33 50h14"/></symbol>
+  <symbol id="ph-box" viewBox="0 0 80 80"><rect class="ph-a" x="10" y="24" width="60" height="44" rx="6"/><rect class="ph-b" x="10" y="24" width="60" height="12" rx="4"/><rect class="ph-c" x="22" y="44" width="36" height="16" rx="3"/><path class="ph-line" d="M40 47v10M35 52h10"/></symbol>
+  <symbol id="ph-herb" viewBox="0 0 80 80"><path class="ph-line" d="M40 72C39 52 41 30 40 8"/><path class="ph-a" d="M40 60C24 59 15 49 14 38c15 2 25 10 26 22Z"/><path class="ph-b" d="M40 46c16-1 25-11 26-22-15 2-25 9-26 22Z"/><path class="ph-a" d="M40 30C30 29 24 22 23 14c10 1 16 7 17 16Z"/></symbol>
+  <symbol id="ph-bandage" viewBox="0 0 80 80"><g transform="rotate(-35 40 40)"><rect class="ph-a" x="6" y="26" width="68" height="28" rx="14"/><rect class="ph-b" x="28" y="26" width="24" height="28"/><circle class="ph-c" cx="36" cy="34" r="1.8"/><circle class="ph-c" cx="44" cy="34" r="1.8"/><circle class="ph-c" cx="36" cy="46" r="1.8"/><circle class="ph-c" cx="44" cy="46" r="1.8"/></g></symbol>
+</svg>
+
+<div class="wrap">
+  <header>
+    <a class="brand" href="#top" aria-label="Herbal Village home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="var(--panel)"/><path d="M16 26V9" stroke="var(--leaf)" stroke-width="2.2" stroke-linecap="round" fill="none"/><path d="M16 17c-4 0-6.600-2.300-6.800-6 3.900.1 6.600 2.200 6.800 6Z" fill="var(--leaf)"/><path d="M16 14c4 0 6.600-2.300 6.800-6-3.900.1-6.600 2.200-6.800 6Z" fill="var(--gold)"/></svg>
+      Herbal Village
+    </a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#products">Products</a>
+      <a href="#hours">Hours</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Pharmacy and distribution · Kampala</p>
+        <h1>Medicine you can trust, <em>close to home.</em></h1>
+        <p class="lede">Herbal Village supplies medicines and health products to families, clinics and shops across Kampala. Call or come in and ask us anything.</p>
+        <div class="actions">
+          <a class="btn btn-gold" href="tel:+256762252774">Call 0762 252 774</a>
+          <a class="btn btn-ghost" href="#products">See our products</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <svg class="sprig" viewBox="0 0 120 150" aria-hidden="true">
+          <path class="stem" d="M60 146C59 110 61 70 60 14"/>
+          <path class="l1" d="M60 118C34 116 22 98 20 80c24 3 38 18 40 38Z"/>
+          <path class="l2" d="M60 96c26-2 38-20 40-38-24 3-38 18-40 38Z"/>
+          <path class="l1" d="M60 70C42 68 33 56 32 43c17 2 27 13 28 27Z"/>
+          <path class="l2" d="M60 46c14-2 22-12 23-23-14 2-22 9-23 23Z"/>
+        </svg>
+        <div class="today" aria-live="polite">
+          <p class="eyebrow">Right now in Kampala</p>
+          <p class="status" id="status" data-state="open"><span class="dot"></span><span id="status-text">Open Monday to Friday</span></p>
+          <p class="sub" id="status-sub">8:00 am to 5:30 pm</p>
+          <p class="where">Herbal Village, Kampala, Uganda</p>
+        </div>
+      </div>
+    </div>
+
+    <section id="services">
+      <div class="sec-head">
+        <p class="eyebrow">What we do</p>
+        <h2>Everyday medicine and bulk supply</h2>
+        <p>Whether you need one box for the family or a regular order for a clinic, we can help.</p>
+      </div>
+      <ul class="services">
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Prescription medicines</h3><p>Bring your prescription and we will fill it.</p></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Over-the-counter remedies</h3><p>Pain relief, cold and flu, stomach and skin care.</p></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Herbal and wellness products</h3><p>Natural health products for daily use.</p></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Wholesale and bulk supply</h3><p>Regular stock for clinics, shops and institutions.</p></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Delivery around Kampala</h3><p>Call us to arrange a delivery to your door.</p></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Help with your medicine</h3><p>Ask how to take it, what to avoid and when to see a doctor.</p></li>
+      </ul>
+    </section>
+
+    <section id="products">
+      <div class="sec-head">
+        <p class="eyebrow">Our products</p>
+        <h2>What we sell</h2>
+        <p>Prices are in Ugandan shillings. Stock changes, so call us to confirm before you come.</p>
+      </div>
+
+      <div class="owner-bar" id="owner-bar" hidden>
+        <p>You can edit this page. Add, change or remove products here.</p>
+        <button class="btn btn-sm btn-solid" type="button" id="edit-btn">Edit products</button>
+      </div>
+      <p class="notice" id="sample-note" hidden>These are sample products so you can see how the list looks. Visitors do not see them yet. Replace them with what you stock, then save.</p>
+
+      <div id="view">
+        <div class="chips" id="chips" role="group" aria-label="Filter products by category" hidden></div>
+        <div class="pgrid" id="pgrid"><p class="pempty">Our product list is being updated. Call us on 0762 252 774 to ask what is in stock.</p></div>
+      </div>
+
+      <div class="editor" id="editor" hidden>
+        <datalist id="cat-list"></datalist>
+        <div id="erows" class="editor"></div>
+        <div class="editor-actions">
+          <button class="btn btn-sm btn-line" type="button" id="add-btn">Add a product</button>
+        </div>
+        <div class="editor-actions">
+          <button class="btn btn-sm btn-solid" type="button" id="save-btn">Save and publish</button>
+          <button class="btn btn-sm btn-line" type="button" id="cancel-btn">Cancel</button>
+          <span class="msg" id="edit-msg" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="hours">
+      <div class="sec-head">
+        <p class="eyebrow">Opening hours</p>
+        <h2>Open weekdays, 8:00 am to 5:30 pm</h2>
+        <p>We are closed on Saturday and Sunday.</p>
+      </div>
+      <div class="week" id="week">
+        <div class="day" data-d="1"><span class="name">Monday</span><span class="t">8:00 am to 5:30 pm</span><span class="tag">Today</span></div>
+        <div class="day" data-d="2"><span class="name">Tuesday</span><span class="t">8:00 am to 5:30 pm</span><span class="tag">Today</span></div>
+        <div class="day" data-d="3"><span class="name">Wednesday</span><span class="t">8:00 am to 5:30 pm</span><span class="tag">Today</span></div>
+        <div class="day" data-d="4"><span class="name">Thursday</span><span class="t">8:00 am to 5:30 pm</span><span class="tag">Today</span></div>
+        <div class="day" data-d="5"><span class="name">Friday</span><span class="t">8:00 am to 5:30 pm</span><span class="tag">Today</span></div>
+        <div class="day closed" data-d="6"><span class="name">Saturday</span><span class="t">Closed</span><span class="tag">Today</span></div>
+        <div class="day closed" data-d="0"><span class="name">Sunday</span><span class="t">Closed</span><span class="tag">Today</span></div>
+      </div>
+      <p class="tz">All times are East Africa Time (Kampala).</p>
+    </section>
+
+    <section id="contact">
+      <div class="sec-head">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Call, write or visit</h2>
+        <p>The quickest way to reach us is by phone during opening hours.</p>
+      </div>
+      <div class="contact">
+        <div class="c-item">
+          <p class="eyebrow">Phone</p>
+          <p class="c-value" id="phone">0762 252 774</p>
+          <div class="c-actions">
+            <a class="btn btn-sm btn-solid" href="tel:+256762252774">Call now</a>
+            <button class="btn btn-sm btn-line" type="button" data-copy="0762252774" id="copy-phone">Copy number</button>
+          </div>
+        </div>
+        <div class="c-item">
+          <p class="eyebrow">Email</p>
+          <p class="c-value" id="email">herbalvillagedc@gmail.com</p>
+          <div class="c-actions">
+            <a class="btn btn-sm btn-solid" href="mailto:herbalvillagedc@gmail.com">Write to us</a>
+            <button class="btn btn-sm btn-line" type="button" data-copy="herbalvillagedc@gmail.com" id="copy-email">Copy address</button>
+          </div>
+        </div>
+        <div class="c-item">
+          <p class="eyebrow">Find us</p>
+          <p class="c-value">Kampala, Uganda</p>
+          <p style="color:var(--muted);font-size:15px">Monday to Friday, 8:00 am to 5:30 pm</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>The information on this page is general. It does not replace advice from a doctor or pharmacist.</p>
+    <p>© 2026 Herbal Village, Kampala</p>
+  </footer>
+</div>
+
+
+<script>
+(function () {
+  /* ---------- opening hours and status ---------- */
+  var OPEN = 8 * 60, CLOSE = 17 * 60 + 30;
+  var names = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  function nowInKampala() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Kampala', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+      var o = {}; parts.forEach(function (p) { o[p.type] = p.value; });
+      var wd = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[o.weekday];
+      var h = parseInt(o.hour, 10) % 24, m = parseInt(o.minute, 10);
+      if (isNaN(wd) || isNaN(h) || isNaN(m)) return null;
+      return { day: wd, mins: h * 60 + m };
+    } catch (e) { return null; }
+  }
+  function isWeekday(d) { return d >= 1 && d <= 5; }
+
+  function renderStatus() {
+    var t = nowInKampala();
+    if (!t) return;
+    var text, sub, state;
+    if (isWeekday(t.day) && t.mins >= OPEN && t.mins < CLOSE) {
+      state = 'open'; text = 'Open now'; sub = 'Open until 5:30 pm today';
+    } else {
+      state = 'closed'; text = 'Closed now';
+      if (isWeekday(t.day) && t.mins < OPEN) sub = 'Opens today at 8:00 am';
+      else {
+        var next = (t.day + 1) % 7, add = 1;
+        while (!isWeekday(next)) { next = (next + 1) % 7; add++; }
+        sub = 'Opens ' + (add === 1 ? 'tomorrow' : names[next]) + ' at 8:00 am';
+      }
+    }
+    document.getElementById('status').setAttribute('data-state', state);
+    document.getElementById('status-text').textContent = text;
+    document.getElementById('status-sub').textContent = sub;
+    var days = document.querySelectorAll('.day');
+    for (var i = 0; i < days.length; i++) {
+      days[i].classList.toggle('today-d', parseInt(days[i].getAttribute('data-d'), 10) === t.day);
+    }
+  }
+  renderStatus();
+  setInterval(renderStatus, 60000);
+
+  /* ---------- copy buttons ---------- */
+  function wireCopy(btnId, targetId) {
+    var btn = document.getElementById(btnId), target = document.getElementById(targetId);
+    if (!btn || !target) return;
+    var label = btn.textContent;
+    function select() {
+      var r = document.createRange(); r.selectNodeContents(target);
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    }
+    btn.addEventListener('click', function () {
+      function done(ok) {
+        btn.textContent = ok ? 'Copied' : 'Selected, press copy';
+        setTimeout(function () { btn.textContent = label; }, 1800);
+      }
+      try {
+        navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function () { done(true); }, function () { select(); done(false); });
+      } catch (e) { select(); done(false); }
+    });
+  }
+  wireCopy('copy-phone', 'phone');
+  wireCopy('copy-email', 'email');
+
+  /* ---------- products ---------- */
+  function readJSON(id, fallback) {
+    try { return JSON.parse(document.getElementById(id).textContent); } catch (e) { return fallback; }
+  }
+  var state = readJSON('hv-data', { sample: false, products: [] });
+  if (!state || !state.products) state = { sample: false, products: [] };
+  var tpl = readJSON('hv-tpl', null);
+
+  var canEdit = false, artifactNs = null, activeCat = '', draft = null, saving = false;
+  var $ = function (id) { return document.getElementById(id); };
+
+  function mk(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function fmtPrice(n) { return 'UGX ' + Number(n).toLocaleString('en-US'); }
+  function newId() { return 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+
+  function categories(list) {
+    var seen = {}, out = [];
+    list.forEach(function (p) {
+      var c = (p.category || '').trim();
+      if (c && !seen[c]) { seen[c] = 1; out.push(c); }
+    });
+    return out;
+  }
+
+  var KINDS = [['bottle', 'Pill bottle'], ['syrup', 'Syrup bottle'], ['box', 'Box or pack'], ['herb', 'Herbal'], ['bandage', 'First aid']];
+  function kindOf(p) {
+    for (var i = 0; i < KINDS.length; i++) if (KINDS[i][0] === p.kind) return p.kind;
+    return 'box';
+  }
+
+  function renderPublic() {
+    var grid = $('pgrid'), chips = $('chips');
+    var hideSamples = state.sample && !canEdit;
+    var list = hideSamples ? [] : state.products.filter(function (p) { return p.name; });
+    grid.textContent = ''; chips.textContent = '';
+
+    if (!list.length) {
+      grid.appendChild(mk('p', 'pempty', 'Our product list is being updated. Call us on 0762 252 774 to ask what is in stock.'));
+      chips.hidden = true;
+      return;
+    }
+    var cats = categories(list);
+    if (cats.indexOf(activeCat) < 0) activeCat = '';
+    chips.hidden = cats.length < 2;
+    if (!chips.hidden) {
+      ['All'].concat(cats).forEach(function (c) {
+        var val = c === 'All' ? '' : c;
+        var b = mk('button', 'chip', c);
+        b.type = 'button';
+        b.setAttribute('aria-pressed', activeCat === val ? 'true' : 'false');
+        b.addEventListener('click', function () { activeCat = val; renderPublic(); });
+        chips.appendChild(b);
+      });
+    }
+    list.filter(function (p) { return !activeCat || (p.category || '').trim() === activeCat; }).forEach(function (p) {
+      var card = mk('article', 'pcard' + (p.inStock === false ? ' oos' : ''));
+      var pic = mk('div', 'pimg');
+      function showPlaceholder() {
+        pic.textContent = '';
+        pic.setAttribute('role', 'img');
+        pic.setAttribute('aria-label', 'Placeholder picture for ' + p.name);
+        pic.innerHTML = '<svg viewBox="0 0 80 80" aria-hidden="true"><use href="#ph-' + kindOf(p) + '"/></svg>';
+      }
+      var src = (p.image || '').trim();
+      if (src) {
+        var im = document.createElement('img');
+        im.alt = p.name;
+        im.loading = 'lazy';
+        im.addEventListener('error', showPlaceholder);
+        im.src = src;
+        pic.appendChild(im);
+      } else {
+        showPlaceholder();
+      }
+      card.appendChild(pic);
+      if (p.category) card.appendChild(mk('p', 'cat', p.category));
+      card.appendChild(mk('h3', '', p.name));
+      if (p.desc) card.appendChild(mk('p', 'desc', p.desc));
+      var meta = mk('div', 'meta');
+      if (typeof p.price === 'number' && p.price >= 0) meta.appendChild(mk('span', 'price', fmtPrice(p.price)));
+      else meta.appendChild(mk('span', 'price ask', 'Ask for price'));
+      meta.appendChild(mk('span', 'stock', p.inStock === false ? 'Out of stock' : 'In stock'));
+      card.appendChild(meta);
+      grid.appendChild(card);
+    });
+  }
+
+  /* ---------- owner editor ---------- */
+  function setMsg(text, isErr) {
+    var m = $('edit-msg');
+    m.textContent = text || '';
+    m.className = 'msg' + (isErr ? ' err' : '');
+  }
+
+  function field(cls, id, labelText, input) {
+    var f = mk('div', 'fld' + (cls ? ' ' + cls : ''));
+    var l = mk('label', '', labelText); l.setAttribute('for', id);
+    input.id = id;
+    f.appendChild(l); f.appendChild(input);
+    return f;
+  }
+  function textInput(value, onInput, ph) {
+    var i = document.createElement('input');
+    i.type = 'text'; i.value = value || ''; if (ph) i.placeholder = ph;
+    i.addEventListener('input', function () { onInput(i.value); });
+    return i;
+  }
+
+  function renderEditor(focusId) {
+    var rows = $('erows');
+    rows.textContent = '';
+    var dl = $('cat-list'); dl.textContent = '';
+    categories(draft).forEach(function (c) { var o = document.createElement('option'); o.value = c; dl.appendChild(o); });
+
+    if (!draft.length) rows.appendChild(mk('p', 'pempty', 'No products yet. Choose "Add a product" to start your list.'));
+
+    draft.forEach(function (p) {
+      var row = mk('div', 'erow');
+      row.appendChild(field('', 'e-name-' + p.id, 'Product name', textInput(p.name, function (v) { p.name = v; }, 'For example, Paracetamol tablets')));
+      var cat = textInput(p.category, function (v) { p.category = v; }, 'For example, Pain relief');
+      cat.setAttribute('list', 'cat-list');
+      row.appendChild(field('', 'e-cat-' + p.id, 'Category', cat));
+      var price = document.createElement('input');
+      price.type = 'number'; price.min = '0'; price.step = '100'; price.inputMode = 'numeric'; price.placeholder = 'Leave empty to ask';
+      price.value = (typeof p.price === 'number') ? String(p.price) : '';
+      price.addEventListener('input', function () { p.price = price.value === '' ? null : Number(price.value); });
+      row.appendChild(field('', 'e-price-' + p.id, 'Price (UGX)', price));
+      row.appendChild(field('wide', 'e-desc-' + p.id, 'Short description', textInput(p.desc, function (v) { p.desc = v; }, 'One line customers will read')));
+      var hasData = /^data:image\//.test(p.image || '');
+      row.appendChild(field('wide', 'e-img-' + p.id, 'Image path or link (optional)', textInput(hasData ? '' : p.image, function (v) { p.image = v; }, hasData ? 'An uploaded photo is in use. Type a path here to replace it.' : 'For example, images/paracetamol.jpg')));
+
+      var upRow = mk('div', 'erow-foot');
+      var upLeft = mk('div', 'editor-actions');
+      var file = document.createElement('input');
+      file.type = 'file'; file.accept = 'image/*'; file.id = 'e-file-' + p.id; file.hidden = true;
+      file.addEventListener('change', function () { if (file.files && file.files[0]) handleFile(p, file.files[0]); });
+      var upBtn = mk('button', 'btn btn-sm btn-line', hasData ? 'Replace photo' : 'Upload photo');
+      upBtn.type = 'button'; upBtn.id = 'e-up-' + p.id;
+      upBtn.addEventListener('click', function () { file.click(); });
+      upLeft.appendChild(upBtn); upLeft.appendChild(file);
+      if (hasData) {
+        var th = document.createElement('img');
+        th.className = 'thumb'; th.src = p.image; th.alt = 'Uploaded photo of ' + (p.name || 'this product');
+        upLeft.appendChild(th);
+      }
+      if (p.image) {
+        var rm = mk('button', 'btn btn-sm btn-danger', 'Remove photo');
+        rm.type = 'button'; rm.id = 'e-rmimg-' + p.id;
+        rm.addEventListener('click', function () { p.image = ''; renderEditor('e-up-' + p.id); });
+        upLeft.appendChild(rm);
+      }
+      upRow.appendChild(upLeft);
+      row.appendChild(upRow);
+
+      var foot = mk('div', 'erow-foot');
+      var sel = document.createElement('select');
+      KINDS.forEach(function (k) {
+        var o = document.createElement('option'); o.value = k[0]; o.textContent = k[1];
+        if (kindOf(p) === k[0]) o.selected = true;
+        sel.appendChild(o);
+      });
+      sel.addEventListener('change', function () { p.kind = sel.value; });
+      foot.appendChild(field('', 'e-kind-' + p.id, 'Placeholder picture', sel));
+      var chk = mk('label', 'check');
+      var cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.id = 'e-stock-' + p.id; cb.checked = p.inStock !== false;
+      cb.addEventListener('change', function () { p.inStock = cb.checked; });
+      chk.appendChild(cb); chk.appendChild(document.createTextNode('In stock'));
+      foot.appendChild(chk);
+      var del = mk('button', 'btn btn-sm btn-danger', 'Remove');
+      del.type = 'button'; del.id = 'e-del-' + p.id;
+      del.setAttribute('aria-label', 'Remove ' + (p.name || 'this product'));
+      del.addEventListener('click', function () {
+        draft = draft.filter(function (x) { return x.id !== p.id; });
+        renderEditor();
+      });
+      foot.appendChild(del);
+      row.appendChild(foot);
+      rows.appendChild(row);
+    });
+    if (focusId && $(focusId)) $(focusId).focus();
+  }
+
+  /* Resize an uploaded photo to at most 640px and keep it inside the page as a small JPEG. */
+  function handleFile(p, f) {
+    if (!/^image\//.test(f.type)) { setMsg('Choose a picture file, such as a JPG or PNG.', true); return; }
+    setMsg('Preparing photo…');
+    var url = URL.createObjectURL(f), im = new Image();
+    im.onload = function () {
+      var w = im.naturalWidth, h = im.naturalHeight, k = Math.min(1, 640 / Math.max(w, h));
+      var c = document.createElement('canvas');
+      c.width = Math.max(1, Math.round(w * k)); c.height = Math.max(1, Math.round(h * k));
+      var ctx = c.getContext('2d');
+      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, c.width, c.height);
+      ctx.drawImage(im, 0, 0, c.width, c.height);
+      var out = '';
+      try { out = c.toDataURL('image/jpeg', 0.82); } catch (e) {}
+      URL.revokeObjectURL(url);
+      if (!out || out.indexOf('data:image/jpeg') !== 0) { setMsg('That picture could not be prepared. Try a different file.', true); return; }
+      p.image = out;
+      setMsg('Photo added. Press Save and publish to keep it.');
+      renderEditor('e-up-' + p.id);
+    };
+    im.onerror = function () { URL.revokeObjectURL(url); setMsg('That file could not be read as a picture. Try a JPG or PNG.', true); };
+    im.src = url;
+  }
+
+  function openEditor() {
+    draft = state.products.map(function (p) {
+      return { id: p.id || newId(), name: p.name || '', category: p.category || '', desc: p.desc || '', price: (typeof p.price === 'number') ? p.price : null, inStock: p.inStock !== false, kind: kindOf(p), image: p.image || '' };
+    });
+    $('view').hidden = true; $('editor').hidden = false; $('owner-bar').hidden = true;
+    $('sample-note').hidden = !state.sample;
+    setMsg('');
+    renderEditor();
+  }
+  function closeEditor() {
+    draft = null;
+    $('editor').hidden = true; $('view').hidden = false; $('owner-bar').hidden = !canEdit;
+    $('sample-note').hidden = !(canEdit && state.sample);
+    renderPublic();
+  }
+
+  /* ---------- saving: the page rebuilds itself and publishes ---------- */
+  function jsonBlock(id, obj) {
+    return '<script type="application/json" id="' + id + '">' + JSON.stringify(obj).replace(/</g, '\\u003c') + '<\/script>';
+  }
+  function resetCss() {
+    try {
+      var s = document.head.querySelector('style');
+      var css = s && s.textContent;
+      if (css && css.indexOf('safe-area-inset-top') > -1 && css.indexOf('[hidden]') > -1) return css;
+    } catch (e) {}
+    return ':root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}';
+  }
+  function buildDoc(nextState) {
+    return '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>' +
+      resetCss() + '</style></head><body>' + tpl.a + jsonBlock('hv-data', nextState) + jsonBlock('hv-tpl', tpl) + tpl.b + '</body></html>';
+  }
+
+  function save() {
+    if (saving) return;
+    var items = [], bad = null;
+    draft.forEach(function (p) {
+      var name = (p.name || '').trim(), cat = (p.category || '').trim(), desc = (p.desc || '').trim();
+      if (!name && !cat && !desc && p.price == null) return;
+      if (!name) { bad = bad || p; return; }
+      items.push({ id: p.id, name: name, category: cat, desc: desc, price: (typeof p.price === 'number' && isFinite(p.price) && p.price >= 0) ? Math.round(p.price) : null, inStock: p.inStock !== false, kind: kindOf(p), image: (p.image || '').trim() });
+    });
+    if (bad) { setMsg('Every product needs a name. Add one or remove the empty product.', true); $('e-name-' + bad.id).focus(); return; }
+    if (!artifactNs || !tpl) { setMsg('Saving is not available in this view. Open the page from your own account to edit it.', true); return; }
+
+    saving = true; $('save-btn').disabled = true; setMsg('Saving…');
+    var next = { sample: false, products: items };
+    var doc;
+    try { doc = buildDoc(next); } catch (e) { saving = false; $('save-btn').disabled = false; setMsg('Something went wrong preparing the page. Your changes are still here, try again.', true); return; }
+    artifactNs.publish(doc).then(function () {
+      setMsg('Saved. The page is reloading.');
+    }, function (err) {
+      saving = false; $('save-btn').disabled = false;
+      var code = err && err.code;
+      if (code === 'conflict') setMsg('Someone saved a newer version first. The page is reloading with their changes. Make your edits again.', true);
+      else if (code === 'not_writer' || code === 'not_granted' || code === 'consent_required') setMsg('You can view this page but not change it. Ask the owner for edit access.', true);
+      else if (code === 'rate_limited') setMsg('You are saving too fast. Wait a moment and try again.', true);
+      else if (code === 'too_large') setMsg('The page is too large to save. Remove some products or shorten descriptions.', true);
+      else setMsg('The page could not be saved. Your changes are still here, try again.', true);
+    });
+  }
+
+  $('edit-btn').addEventListener('click', openEditor);
+  $('cancel-btn').addEventListener('click', closeEditor);
+  $('save-btn').addEventListener('click', save);
+  $('add-btn').addEventListener('click', function () {
+    var p = { id: newId(), name: '', category: '', desc: '', price: null, inStock: true, kind: 'box', image: '' };
+    draft.push(p);
+    renderEditor('e-name-' + p.id);
+  });
+
+  renderPublic();
+
+  /* ---------- who is looking: only people who can edit see the editor ---------- */
+  (function init() {
+    if (!window.claude || !window.claude.use || !tpl) return;
+    Promise.all([window.claude.use('user'), window.claude.use('artifact')]).then(function (r) {
+      var user = r[0]; artifactNs = r[1];
+      if (!user || !artifactNs) return;
+      return user.canEdit().then(function (ok) {
+        if (!ok) return;
+        canEdit = true;
+        $('owner-bar').hidden = false;
+        $('sample-note').hidden = !state.sample;
+        renderPublic();
+      });
+    }).catch(function () {});
+  })();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+HERBAL VILLAGE PAGE  - PRODUCT PICTURE LIST 
+
+************ remember image ratio and size dimension **** 4:3 landscape **and 800x600pixels****that tops
+
+prunus.jpg                         prunus
+cough-syrup.jpg                    Cough syrup
+oral-rehydration-salts.jpg         Oral rehydration salts
+herbal-tea-blend.jpg               Herbal tea blend
+adhesive-bandages.jpg              Adhesive bandages
+antiseptic-solution.jpg            Antiseptic solution
+paracetamol-tablets.jpg            Paracetamol tablets
+ibuprofen-tablets.jpg              Ibuprofen tablets
+throat-lozenges.jpg                Throat lozenges
+nasal-spray.jpg                    Saline nasal spray
+antacid-tablets.jpg                Antacid tablets
+vitamin-c.jpg                      Vitamin C tablets
+multivitamin.jpg                   Multivitamin capsules
+moringa-powder.jpg                 Moringa leaf powder
+aloe-vera-gel.jpg                  Aloe vera gel
+petroleum-jelly.jpg                Petroleum jelly
+gauze-and-tape.jpg                 Gauze rolls and medical tape
+
+To use a different file name or type (for example .png), open index.html in a text editor
+and change the path in that product's line near the top, for example "images/prunus.jpg" to "images/prunus.png".
