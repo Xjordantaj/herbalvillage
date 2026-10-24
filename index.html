@@ -1,0 +1,1145 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Herbal Village</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Nunito+Sans:wght@400;600;700&display=swap">
+<style>
+/* Layout: one deep-green hero panel (name, promise, live open/closed status), then plain light sections for services, products, weekly hours and contact. Boldness lives in the headline type. */
+:root {
+  --bg: #F4F8EE;
+  --surface: #FFFFFF;
+  --fg: #16261E;
+  --muted: #53665B;
+  --line: #D6E1CE;
+  --soft: #E5EEDC;
+  --panel: #1E5A3E;
+  --on-panel: #F4F8EE;
+  --panel-muted: #BCD6C5;
+  --leaf: #8FCFA9;
+  --gold: #E8A913;
+  --on-gold: #2B1F00;
+  --action: #1E5A3E;
+  --on-action: #F4F8EE;
+  --wa: #0F7A40;
+  --on-wa: #FFFFFF;
+  --wa-light: #4FD58A;
+  --on-wa-light: #07210F;
+  --ok: #1F7A48;
+  --hl: color-mix(in srgb, var(--gold) 38%, transparent);
+  --off: #8A4B2D;
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --gutter: 20px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1A14; --surface: #17261E; --fg: #E6EFE3; --muted: #9DB2A4; --line: #28392F; --soft: #1C2E24;
+    --panel: #173C2A; --on-panel: #EEF5EA; --panel-muted: #A9C8B5; --leaf: #6FBE92;
+    --gold: #EDB02A; --on-gold: #2B1F00; --action: #7FD3A7; --on-action: #0E1B14; --ok: #6FD09B; --off: #E0A07E;
+    --wa: #4FD58A; --on-wa: #07210F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1A14; --surface: #17261E; --fg: #E6EFE3; --muted: #9DB2A4; --line: #28392F; --soft: #1C2E24;
+  --panel: #173C2A; --on-panel: #EEF5EA; --panel-muted: #A9C8B5; --leaf: #6FBE92;
+  --gold: #EDB02A; --on-gold: #2B1F00; --action: #7FD3A7; --on-action: #0E1B14; --ok: #6FD09B; --off: #E0A07E;
+  --wa: #4FD58A; --on-wa: #07210F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  padding-inline: var(--gutter); padding-block: 0 32px;
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.08; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1080px; margin-inline: auto; }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+/* header */
+header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 20px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 22px; text-decoration: none; letter-spacing: -.01em; }
+.brand svg { width: 30px; height: 30px; flex: none; }
+nav { display: flex; flex-wrap: wrap; gap: 4px 22px; font-weight: 600; font-size: 15px; }
+nav a { text-decoration: none; padding-block: 6px; border-bottom: 2px solid transparent; }
+nav a:hover { border-bottom-color: var(--gold); }
+
+/* hero */
+.hero { background: var(--panel); color: var(--on-panel); border-radius: 28px; padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 32px 48px; align-items: center; }
+.hero .eyebrow { color: var(--gold); }
+.hero h1 { font-size: clamp(2.5rem, 6.4vw, 4.6rem); font-weight: 700; letter-spacing: -.03em; margin-top: 14px; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero .lede { font-size: 1.12rem; color: var(--panel-muted); max-width: 34ch; margin-top: 20px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 16px; text-decoration: none; border: 2px solid transparent; font-family: var(--font-body); cursor: pointer; }
+.btn-gold { background: var(--gold); color: var(--on-gold); }
+.btn-gold:hover { filter: brightness(1.06); }
+.btn-ghost { border-color: var(--panel-muted); color: var(--on-panel); background: transparent; }
+.btn-ghost:hover { background: rgba(255,255,255,.08); }
+.hero-side { display: flex; flex-direction: column; gap: 18px; align-items: stretch; min-width: 0; }
+.sprig { width: 120px; height: auto; align-self: center; }
+.sprig .stem { stroke: var(--leaf); fill: none; stroke-width: 4; stroke-linecap: round; }
+.sprig .l1 { fill: var(--leaf); }
+.sprig .l2 { fill: var(--gold); }
+.today { background: var(--surface); color: var(--fg); border-radius: 20px; padding: 22px 22px 20px; }
+.today .eyebrow { color: var(--muted); }
+.status { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.55rem; margin-top: 8px; line-height: 1.15; }
+.dot { width: 14px; height: 14px; border-radius: 50%; background: var(--ok); flex: none; box-shadow: 0 0 0 5px color-mix(in srgb, var(--ok) 22%, transparent); }
+.status[data-state="closed"] .dot { background: var(--off); box-shadow: 0 0 0 5px color-mix(in srgb, var(--off) 22%, transparent); }
+.today p.sub { color: var(--muted); font-size: 15px; margin-top: 6px; }
+.today .where { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 15px; }
+
+/* sections */
+section { padding-block: clamp(48px, 8vw, 88px) 0; }
+.sec-head { display: flex; flex-direction: column; gap: 10px; max-width: 46ch; }
+.sec-head .eyebrow { color: var(--ok); }
+.sec-head h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 700; letter-spacing: -.02em; }
+.sec-head p { color: var(--muted); }
+
+.services { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+.services li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 4px 16px; padding-block: 22px; border-top: 1px solid var(--line); }
+.services .ico { width: 40px; height: 40px; border-radius: 12px; background: var(--soft); display: grid; place-items: center; grid-row: span 2; }
+.services .ico svg { width: 22px; height: 22px; fill: var(--ok); }
+.services h3 { font-size: 1.2rem; font-weight: 650; letter-spacing: -.01em; }
+.services p { color: var(--muted); font-size: 16px; }
+
+/* products */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.chip { font-family: var(--font-body); font-weight: 700; font-size: 14.5px; min-height: 40px; padding: 6px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+.chip:hover { background: var(--soft); }
+.chip[aria-pressed="true"] { background: var(--action); border-color: var(--action); color: var(--on-action); }
+.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px; margin-top: 20px; }
+.pcard { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.pcard .cat { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ok); }
+.pcard h3 { font-size: 1.15rem; font-weight: 650; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.pcard .desc { color: var(--muted); font-size: 15px; flex: 1; overflow-wrap: anywhere; }
+.pcard .meta { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--line); }
+.price { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.price.ask { font-family: var(--font-body); font-weight: 600; font-size: 14.5px; color: var(--muted); }
+.stock { font-size: 13px; font-weight: 700; color: var(--ok); }
+.pcard.oos { background: transparent; border-style: dashed; }
+.pcard.oos .stock { color: var(--off); }
+.pcard.oos h3, .pcard.oos .price { color: var(--muted); }
+.pempty { grid-column: 1 / -1; padding: 28px; border: 1.5px dashed var(--line); border-radius: 16px; color: var(--muted); }
+
+.pimg { aspect-ratio: 4 / 3; max-width: 100%; border-radius: 12px; background: var(--soft); display: grid; place-items: center; margin-bottom: 8px; }
+.pimg { overflow: hidden; }
+.pimg svg { width: 46%; height: auto; max-height: 82%; }
+.pimg img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.thumb { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); }
+.pcard.oos .pimg { opacity: .6; }
+.ph-a { fill: var(--ok); }
+.ph-b { fill: var(--gold); }
+.ph-c { fill: var(--surface); }
+.ph-line { stroke: var(--ok); fill: none; stroke-width: 3; stroke-linecap: round; }
+
+/* product names and product page */
+.fld textarea { min-height: 92px; resize: vertical; line-height: 1.5; }
+.plink { color: inherit; text-decoration: none; }
+.plink::after { content: " \2192"; color: var(--ok); font-weight: 600; }
+.plink:hover { text-decoration: none; }
+.pcard .pimg { cursor: pointer; }
+.detail { padding-top: 8px; }
+.back { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; font-size: 15px; text-decoration: none; border-bottom: 2px solid transparent; }
+.back:hover { border-bottom-color: var(--gold); }
+.dgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px 48px; margin-top: 12px; align-items: start; }
+.dimg { aspect-ratio: 4 / 3; max-width: 100%; border-radius: 22px; background: var(--soft); overflow: hidden; display: grid; place-items: center; }
+.dimg svg { width: 38%; height: auto; max-height: 80%; }
+.dimg img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.dimg.oos { opacity: .65; }
+.dinfo { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.dinfo .eyebrow { color: var(--ok); }
+.dinfo h1 { font-size: clamp(2rem, 4.6vw, 3.1rem); font-weight: 700; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.dmeta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.dprice { font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; font-variant-numeric: tabular-nums; }
+.dprice.ask { font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--muted); }
+.pill { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 800; letter-spacing: .04em; background: var(--soft); color: var(--ok); }
+.pill.out { color: var(--off); }
+.dlead { font-size: 1.1rem; max-width: 60ch; overflow-wrap: anywhere; white-space: pre-line; }
+.dfact { display: grid; gap: 10px; margin: 0; padding-block: 14px; border-block: 1px solid var(--line); font-size: 15.5px; }
+.dfact .frow { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 4px 16px; }
+.dfact dt { font-weight: 700; }
+.dfact dd { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
+.dlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; max-width: 60ch; }
+.dlist li { position: relative; padding-left: 26px; color: var(--muted); overflow-wrap: anywhere; }
+.dlist li::before { content: ""; position: absolute; left: 2px; top: .5em; width: 10px; height: 10px; border-radius: 50% 0 50% 0; background: var(--ok); }
+.dnote.guide { padding: 12px 14px; border-radius: 12px; background: var(--soft); }
+@media (max-width: 480px) { .dfact .frow { grid-template-columns: minmax(0, 1fr); } }
+.dsec h2 { font-size: 1.2rem; font-weight: 650; letter-spacing: -.01em; margin-bottom: 6px; }
+.dsec p { color: var(--muted); max-width: 60ch; overflow-wrap: anywhere; white-space: pre-line; }
+.dact { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 4px; }
+.dnote { font-size: 14.5px; color: var(--muted); }
+.related { margin-top: clamp(40px, 6vw, 64px); }
+.related h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em; }
+
+/* owner editing */
+.owner-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin-top: 24px; padding: 14px 18px; border-radius: 16px; background: var(--soft); }
+.owner-bar p { font-size: 15px; }
+.notice { margin-top: 16px; padding: 12px 16px; border-radius: 12px; background: var(--surface); border-left: 5px solid var(--gold); font-size: 15px; }
+.editor { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+.erow { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px; }
+.fld { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.fld.wide { grid-column: 1 / -1; }
+.fld label { font-size: 12.5px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+.fld select, .fld textarea, .fld input[type="text"], .fld input[type="number"] { font-family: var(--font-body); font-size: 16px; min-height: 44px; padding: 8px 12px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--bg); color: var(--fg); width: 100%; }
+.erow-foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.check { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15.5px; min-height: 40px; }
+.check input { width: 20px; height: 20px; accent-color: var(--action); }
+.editor-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+.msg { font-size: 15px; color: var(--muted); }
+.msg.err { color: var(--off); font-weight: 600; }
+
+/* hours */
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; margin-top: 32px; }
+.day { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.day .name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+.day .t { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; line-height: 1.35; }
+.day.closed { background: transparent; border-style: dashed; }
+.day.closed .name { color: var(--muted); }
+.day.today-d { border: 2px solid var(--gold); background: var(--surface); }
+.day .tag { display: none; }
+.day.today-d .tag { display: inline-block; align-self: flex-start; background: var(--gold); color: var(--on-gold); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-top: 4px; }
+.tz { margin-top: 14px; font-size: 14px; color: var(--muted); }
+
+/* contact */
+.contact { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+.c-item { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.c-item .eyebrow { color: var(--muted); }
+.c-value { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; letter-spacing: -.01em; overflow-wrap: anywhere; user-select: all; }
+.c-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.btn-sm { min-height: 40px; padding: 6px 16px; font-size: 14.5px; }
+.btn-solid { background: var(--action); color: var(--on-action); }
+.btn-solid:hover { filter: brightness(1.08); }
+.btn-solid[disabled] { opacity: .6; cursor: default; }
+.btn-wa { background: var(--wa); color: var(--on-wa); gap: 8px; }
+.btn-wa:hover { filter: brightness(1.08); }
+.btn-wa svg { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.hero .btn-wa { background: var(--wa-light); color: var(--on-wa-light); }
+
+/* social links */
+.social-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 24px; }
+.social-row .eyebrow { color: var(--muted); }
+.socials { display: flex; flex-wrap: wrap; gap: 8px; }
+.socials a { display: inline-flex; align-items: center; min-height: 40px; padding: 6px 16px; border-radius: 999px; border: 1.5px solid var(--line); font-weight: 700; font-size: 14.5px; text-decoration: none; color: var(--fg); background: transparent; }
+.socials a:hover { background: var(--soft); }
+footer .socials a { min-height: 36px; font-size: 14px; color: var(--muted); }
+
+/* how to order */
+.steps { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; counter-reset: step; }
+.steps li { counter-increment: step; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.steps li::before { content: counter(step); width: 34px; height: 34px; border-radius: 50%; background: var(--soft); color: var(--ok); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; margin-bottom: 6px; }
+.steps h3 { font-size: 1.1rem; font-weight: 650; letter-spacing: -.01em; }
+.steps p { color: var(--muted); font-size: 15.5px; }
+.order-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 24px; }
+.order-cta .num { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; user-select: all; }
+.order-note { margin-top: 14px; font-size: 15px; color: var(--muted); max-width: 62ch; }
+@media (max-width: 960px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+.btn-line { border-color: var(--line); background: transparent; color: var(--fg); }
+.btn-line:hover { background: var(--soft); }
+.btn-danger { border-color: var(--line); background: transparent; color: var(--off); }
+.btn-danger:hover { background: var(--soft); }
+
+footer { margin-top: clamp(48px, 8vw, 88px); padding-top: 24px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 32px; font-size: 14px; color: var(--muted); }
+footer p { max-width: 58ch; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .dgrid { grid-template-columns: minmax(0, 1fr); }
+  .sprig { display: none; }
+  .services { grid-template-columns: minmax(0, 1fr); }
+  .contact { grid-template-columns: minmax(0, 1fr); }
+  .week { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .erow { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  body { font-size: 16px; }
+  .hero .btn { width: 100%; }
+}
+/* highlights: text you select, and a marker stroke under names that grows on hover or focus */
+::selection { background: color-mix(in srgb, var(--gold) 60%, transparent); color: inherit; }
+.plink, .services h3 {
+  background-image: linear-gradient(var(--hl), var(--hl));
+  background-repeat: no-repeat; background-position: 0 92%; background-size: 0% 44%;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.pcard:focus-within .plink, .plink:focus-visible { background-size: 100% 44%; }
+.pcard:focus-within { border-color: var(--gold); box-shadow: 0 0 0 3px var(--hl); }
+.pcard:active { transform: scale(.985); }
+.chip[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--hl); }
+.chip:active, .btn:active { transform: scale(.97); }
+nav a:focus-visible { background: var(--hl); border-bottom-color: var(--gold); border-radius: 8px 8px 0 0; }
+
+/* the same highlights on hover, only for devices with a mouse */
+@media (hover: hover) {
+  .pcard:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 0 0 3px var(--hl), 0 18px 30px -20px color-mix(in srgb, var(--fg) 55%, transparent); }
+  .pcard:hover .plink { background-size: 100% 44%; }
+  .pcard:hover .pimg img { transform: scale(1.05); }
+  .btn:hover { transform: translateY(-1px); }
+  .chip:hover { border-color: var(--gold); }
+  nav a:hover { background: var(--hl); border-radius: 8px 8px 0 0; }
+  .services li:hover h3 { background-size: 100% 44%; }
+  .services li:hover .ico { background: var(--gold); }
+  .services li:hover .ico svg { fill: var(--on-gold); }
+  .steps li:hover, .c-item:hover, .day:hover { border-color: var(--gold); box-shadow: 0 0 0 3px var(--hl); }
+  .steps li:hover::before { background: var(--gold); color: var(--on-gold); }
+  .socials a:hover { border-color: var(--gold); }
+}
+
+/* motion: a short load-in sequence, then cards that rise in one after another */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  @keyframes drop { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+  @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @keyframes unfurl { from { opacity: 0; transform: scale(.15) rotate(-10deg); } to { opacity: 1; transform: none; } }
+  @keyframes ring { from { box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 40%, transparent); } to { box-shadow: 0 0 0 12px transparent; } }
+
+  header { animation: drop .5s ease backwards; }
+  .hero > div:first-child > * { animation: rise .8s cubic-bezier(.2, .7, .2, 1) backwards; }
+  .hero > div:first-child > :nth-child(1) { animation-delay: .1s; }
+  .hero > div:first-child > :nth-child(2) { animation-delay: .2s; }
+  .hero > div:first-child > :nth-child(3) { animation-delay: .32s; }
+  .hero > div:first-child > :nth-child(4) { animation-delay: .44s; }
+  .hero .today { animation: rise .8s cubic-bezier(.2, .7, .2, 1) .55s backwards; }
+  .sprig .stem { stroke-dasharray: 1; animation: draw 1s ease-out .25s backwards; }
+  .sprig path:not(.stem) { transform-box: fill-box; animation: unfurl .55s cubic-bezier(.2, .9, .3, 1.25) backwards; }
+  .sprig .l1 { transform-origin: 100% 100%; }
+  .sprig .l2 { transform-origin: 0% 100%; }
+  .sprig path:nth-child(2) { animation-delay: .7s; }
+  .sprig path:nth-child(3) { animation-delay: .85s; }
+  .sprig path:nth-child(4) { animation-delay: 1s; }
+  .sprig path:nth-child(5) { animation-delay: 1.15s; }
+  .status[data-state="open"] .dot { animation: ring 2.4s ease-out 1.2s infinite; }
+
+  /* products: each card rises in turn; --i is the card's position, set by the script */
+  .pgrid .pcard { animation: rise .65s cubic-bezier(.2, .7, .2, 1) backwards; animation-delay: calc(min(var(--i, 0), 11) * 60ms + 150ms); }
+  .pgrid .pcard.wait { animation: none; opacity: 0; transform: translateY(34px); }
+  .pgrid .pcard.wait.in { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+  .pcard { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .pimg img { transition: transform .6s ease; }
+  .plink, .services h3 { transition: background-size .35s ease; }
+  .steps li, .c-item, .day, .services .ico, .socials a, nav a { transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease; }
+  .steps li::before { transition: background-color .2s ease, color .2s ease; }
+  .chip, .btn { transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .15s ease, filter .2s ease; }
+  #detail:not([hidden]) .dgrid { animation: rise .6s cubic-bezier(.2, .7, .2, 1) backwards; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="leaf" viewBox="0 0 24 24"><path d="M20.5 3.5C11 3.5 4.5 8 4.5 15.2c0 1.1.2 2.1.6 3L3 20.8l1.4 1.2 2.2-2.2c.9.4 1.9.6 3 .6C17.6 20.4 20.5 12.5 20.5 3.5Z"/></symbol>
+  <symbol id="ph-bottle" viewBox="0 0 80 80"><rect class="ph-b" x="26" y="8" width="28" height="12" rx="4"/><rect class="ph-a" x="22" y="20" width="36" height="52" rx="8"/><rect class="ph-c" x="27" y="32" width="26" height="26" rx="3"/><path class="ph-line" d="M40 38v14M33 45h14"/></symbol>
+  <symbol id="ph-syrup" viewBox="0 0 80 80"><rect class="ph-b" x="31" y="6" width="18" height="10" rx="3"/><rect class="ph-a" x="34" y="16" width="12" height="12" rx="2"/><rect class="ph-a" x="20" y="26" width="40" height="46" rx="10"/><rect class="ph-c" x="25" y="38" width="30" height="24" rx="3"/><path class="ph-line" d="M40 43v14M33 50h14"/></symbol>
+  <symbol id="ph-box" viewBox="0 0 80 80"><rect class="ph-a" x="10" y="24" width="60" height="44" rx="6"/><rect class="ph-b" x="10" y="24" width="60" height="12" rx="4"/><rect class="ph-c" x="22" y="44" width="36" height="16" rx="3"/><path class="ph-line" d="M40 47v10M35 52h10"/></symbol>
+  <symbol id="ph-herb" viewBox="0 0 80 80"><path class="ph-line" d="M40 72C39 52 41 30 40 8"/><path class="ph-a" d="M40 60C24 59 15 49 14 38c15 2 25 10 26 22Z"/><path class="ph-b" d="M40 46c16-1 25-11 26-22-15 2-25 9-26 22Z"/><path class="ph-a" d="M40 30C30 29 24 22 23 14c10 1 16 7 17 16Z"/></symbol>
+  <symbol id="ph-bandage" viewBox="0 0 80 80"><g transform="rotate(-35 40 40)"><rect class="ph-a" x="6" y="26" width="68" height="28" rx="14"/><rect class="ph-b" x="28" y="26" width="24" height="28"/><circle class="ph-c" cx="36" cy="34" r="1.8"/><circle class="ph-c" cx="44" cy="34" r="1.8"/><circle class="ph-c" cx="36" cy="46" r="1.8"/><circle class="ph-c" cx="44" cy="46" r="1.8"/></g></symbol>
+</svg>
+
+<div class="wrap">
+  <header>
+    <a class="brand" href="#top" aria-label="Herbal Village home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="var(--panel)"/><path d="M16 26V9" stroke="var(--leaf)" stroke-width="2.2" stroke-linecap="round" fill="none"/><path d="M16 17c-4 0-6.600-2.300-6.800-6 3.900.1 6.600 2.200 6.800 6Z" fill="var(--leaf)"/><path d="M16 14c4 0 6.600-2.300 6.800-6-3.900.1-6.600 2.200-6.800 6Z" fill="var(--gold)"/></svg>
+      Herbal Village
+    </a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#products">Products</a>
+      <a href="#order">How to order</a>
+      <a href="#hours">Hours</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="detail" id="detail" hidden></div>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Pharmacy and distribution · Kampala</p>
+        <h1>Herbal <em>Village</em></h1>
+        <p class="lede">Medicine you can trust, close to home. We supply medicines and health products to families, clinics and shops across Kampala. Call or come in and ask us anything.</p>
+        <div class="actions">
+          <a class="btn btn-gold" href="tel:+256762252774">Call 0762 252 774</a>
+          <a class="btn btn-wa" href="https://wa.me/256762252774" data-wa="Hello Herbal Village, I would like to place an order." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.500l1.700-5A8.500 8.500 0 1 1 21 11.500Z"/></svg>Order on WhatsApp</a>
+          <a class="btn btn-ghost" href="#products">See our products</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <svg class="sprig" viewBox="0 0 120 150" aria-hidden="true">
+          <path class="stem" pathLength="1" d="M60 146C59 110 61 70 60 14"/>
+          <path class="l1" d="M60 118C34 116 22 98 20 80c24 3 38 18 40 38Z"/>
+          <path class="l2" d="M60 96c26-2 38-20 40-38-24 3-38 18-40 38Z"/>
+          <path class="l1" d="M60 70C42 68 33 56 32 43c17 2 27 13 28 27Z"/>
+          <path class="l2" d="M60 46c14-2 22-12 23-23-14 2-22 9-23 23Z"/>
+        </svg>
+        <div class="today" aria-live="polite">
+          <p class="eyebrow">Right now in Kampala</p>
+          <p class="status" id="status" data-state="open"><span class="dot"></span><span id="status-text">Open Monday to Friday</span></p>
+          <p class="sub" id="status-sub">8:00 am to 5:30 pm</p>
+          <p class="where">Herbal Village, Kampala, Uganda</p>
+        </div>
+      </div>
+    </div>
+
+    <section id="services">
+      <div class="sec-head">
+        <p class="eyebrow">What we do</p>
+        <h2>Everyday medicine and bulk supply</h2>
+        <p>Whether you need one box for the family or a regular order for a clinic, we can help.</p>
+      </div>
+      <ul class="services">
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Prescription medicines</h3><p>Bring your prescription and we will fill it.</p></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Over-the-counter remedies</h3><p>Pain relief, cold and flu, stomach and skin care.</p></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Herbal and wellness products</h3><p>Natural health products for daily use.</p></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Wholesale and bulk supply</h3><p>Regular stock for clinics, shops and institutions.</p></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Delivery around Kampala</h3><p>Call us to arrange a delivery to your door.</p></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#leaf"/></svg></span><h3>Help with your medicine</h3><p>Ask how to take it, what to avoid and when to see a doctor.</p></li>
+      </ul>
+    </section>
+
+    <section id="products">
+      <div class="sec-head">
+        <p class="eyebrow">Our products</p>
+        <h2>What we sell</h2>
+        <p>Prices are in Ugandan shillings. Stock changes, so call us to confirm before you come.</p>
+      </div>
+
+      <div class="owner-bar" id="owner-bar" hidden>
+        <p>You can edit this page. Add, change or remove products here.</p>
+        <button class="btn btn-sm btn-solid" type="button" id="edit-btn">Edit products</button>
+      </div>
+      <p class="notice" id="sample-note" hidden>These are sample products so you can see how the list looks. Visitors do not see them yet. Replace them with what you stock, then save.</p>
+
+      <div id="view">
+        <div class="chips" id="chips" role="group" aria-label="Filter products by category" hidden></div>
+        <div class="pgrid" id="pgrid"><p class="pempty">Our product list is being updated. Call us on 0762 252 774 to ask what is in stock.</p></div>
+      </div>
+
+      <div class="editor" id="editor" hidden>
+        <datalist id="cat-list"></datalist>
+        <div id="erows" class="editor"></div>
+        <div class="editor-actions">
+          <button class="btn btn-sm btn-line" type="button" id="add-btn">Add a product</button>
+        </div>
+        <div class="editor-actions">
+          <button class="btn btn-sm btn-solid" type="button" id="save-btn">Save and publish</button>
+          <button class="btn btn-sm btn-line" type="button" id="cancel-btn">Cancel</button>
+          <span class="msg" id="edit-msg" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="order">
+      <div class="sec-head">
+        <p class="eyebrow">How to order</p>
+        <h2>Order in four steps</h2>
+        <p>You do not need an account. Tell us what you need and we will take care of the rest.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Pick your products</h3><p>Look through the list above and note the product names and how many you need.</p></li>
+        <li><h3>Message us</h3><p>Tap Order on WhatsApp on any product page and the message is already written for you. You can also call us during opening hours.</p></li>
+        <li><h3>We confirm</h3><p>We reply with stock, price and how you can pay.</p></li>
+        <li><h3>Receive your order</h3><p>Collect it from us in Kampala, or ask for delivery around Kampala. Clinics and shops can ask about bulk supply.</p></li>
+      </ol>
+      <div class="order-cta">
+        <a class="btn btn-wa" href="https://wa.me/256762252774" data-wa="Hello Herbal Village, I would like to place an order." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.500l1.700-5A8.500 8.500 0 1 1 21 11.500Z"/></svg>Order on WhatsApp</a>
+        <span class="num">0762 252 774</span>
+      </div>
+      <p class="order-note">The WhatsApp button opens a chat with us if WhatsApp is on your phone or computer. If it does not open, message or call 0762 252 774 and give us the product names.</p>
+    </section>
+
+    <section id="hours">
+      <div class="sec-head">
+        <p class="eyebrow">Opening hours</p>
+        <h2>Open weekdays, 8:00 am to 5:30 pm</h2>
+        <p>We are closed on Saturday and Sunday.</p>
+      </div>
+      <div class="week" id="week">
+        <div class="day" data-d="1"><span class="name">Monday</span><span class="t">8:00 am to 5:30 pm</span><span class="tag">Today</span></div>
+        <div class="day" data-d="2"><span class="name">Tuesday</span><span class="t">8:00 am to 5:30 pm</span><span class="tag">Today</span></div>
+        <div class="day" data-d="3"><span class="name">Wednesday</span><span class="t">8:00 am to 5:30 pm</span><span class="tag">Today</span></div>
+        <div class="day" data-d="4"><span class="name">Thursday</span><span class="t">8:00 am to 5:30 pm</span><span class="tag">Today</span></div>
+        <div class="day" data-d="5"><span class="name">Friday</span><span class="t">8:00 am to 5:30 pm</span><span class="tag">Today</span></div>
+        <div class="day closed" data-d="6"><span class="name">Saturday</span><span class="t">Closed</span><span class="tag">Today</span></div>
+        <div class="day closed" data-d="0"><span class="name">Sunday</span><span class="t">Closed</span><span class="tag">Today</span></div>
+      </div>
+      <p class="tz">All times are East Africa Time (Kampala).</p>
+    </section>
+
+    <section id="contact">
+      <div class="sec-head">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Call, write or visit</h2>
+        <p>The quickest way to reach us is by phone during opening hours.</p>
+      </div>
+      <div class="contact">
+        <div class="c-item">
+          <p class="eyebrow">Phone and WhatsApp</p>
+          <p class="c-value" id="phone">0762 252 774</p>
+          <div class="c-actions">
+            <a class="btn btn-sm btn-solid" href="tel:+256762252774">Call now</a>
+            <a class="btn btn-sm btn-wa" href="https://wa.me/256762252774" data-wa="Hello Herbal Village, I have a question." target="_blank" rel="noopener">WhatsApp</a>
+            <button class="btn btn-sm btn-line" type="button" data-copy="0762252774" id="copy-phone">Copy number</button>
+          </div>
+        </div>
+        <div class="c-item">
+          <p class="eyebrow">Email</p>
+          <p class="c-value" id="email">herbalvillagedc@gmail.com</p>
+          <div class="c-actions">
+            <a class="btn btn-sm btn-solid" href="mailto:herbalvillagedc@gmail.com">Write to us</a>
+            <button class="btn btn-sm btn-line" type="button" data-copy="herbalvillagedc@gmail.com" id="copy-email">Copy address</button>
+          </div>
+        </div>
+        <div class="c-item">
+          <p class="eyebrow">Find us</p>
+          <p class="c-value">Kampala, Uganda</p>
+          <p style="color:var(--muted);font-size:15px">Monday to Friday, 8:00 am to 5:30 pm</p>
+        </div>
+      </div>
+      <div class="social-row">
+        <p class="eyebrow">Social media</p>
+        <nav class="socials" aria-label="Social media">
+          <a href="https://www.facebook.com/" data-social="facebook" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/" data-social="instagram" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/" data-social="tiktok" target="_blank" rel="noopener">TikTok</a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>The information on this page is general. It does not replace advice from a doctor or pharmacist.</p>
+    <nav class="socials" aria-label="Social media links">
+      <a href="https://www.facebook.com/" data-social="facebook" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/" data-social="instagram" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/" data-social="tiktok" target="_blank" rel="noopener">TikTok</a>
+    </nav>
+    <p>© 2026 Herbal Village, Kampala</p>
+  </footer>
+</div>
+
+<script type="application/json" id="hv-data">{"sample":false,"products":[
+{"id":"p-sample-1","name":"PURE PRUNUS AFRICANA [entasesa]","category":"prostate relief","desc":"Anti-cancer prostate","price":0,"inStock":true,"kind":"box","pack":"100grams","about":"Herbal product from our prostate relief range. Ask our pharmacist for details, pack sizes and whether it suits you.","benefits":"","ingredients":"Pure Prunus africana (entasesa). No artificial colours; natural and organic.","storage":"keep in a cool dry place","use":"Add a tea spoonful of Pure prunus africana (entasesa) in a up of hot water once a day or as recomended by a resourceful person for maximum general body benefit.","care":"NO ARTIFICAL COLORS , JUST NATURAL AND ORGANIC PURE PRUNUS AFRICANA  [ENTASESA]","image":"images/pure-prunus-africana-1.jpg"},
+{"id":"p-sample-2","name":"Sangoma Heral cough mixture","category":"syrup","desc":"Herbal cough syrup","price":0,"inStock":true,"kind":"syrup","pack":"250mls","about":"Ideal for seasonal cough, bronchitis,chest pain, and persistent coughs and influenza.","benefits":"seasonal cough\nchest congestion","ingredients":"(check bottle)","storage":"keep in a cool dry place","use":"Babies: 1 tea spoon x 2 a day \nInfants: 1 tea spoon x 3 a day\nAdults: 2 table spoons x 3 a day","care":"Keep out of reach of children.","image":"images/coughsyrup.jpg"},
+{"id":"p-sample-3","name":"PURE AVOCADO SEED POWDER","category":"health cure","desc":"pure dried avocado powder","price":0,"inStock":true,"kind":"herb","pack":"100grams","about":"ideal for colon cleaning ,kidney health , great vision and ...","benefits":"","ingredients":"pure dried and powdered avocado seed","storage":"keep in a cool dry place","use":"Add a tea spoonful of pure avocado seed powder in a cup of hot water ,tea , food porridge or even cold water for maximum general body benefit.","care":"keep out of reach of children.","image":"images/pure-avocado-seed-powder-3.jpg"},
+{"id":"p-sample-4","name":"PURE MPIRIVUMA (WILD DATES) phoenix reclinata","category":"health cure","desc":"pure mpirivuma (wild dates)","price":0,"inStock":true,"kind":"herb","pack":"100grams","about":"Boost enery , treat diarrhoea,cure allergies, relieve constipation , treat anemia","benefits":"","ingredients":"","storage":"keep in a cool dry place","use":"Steep in hot water as directed on the pack.","care":"keep out of reach of children","image":"images/wild dates.jpg"},
+{"id":"p-sample-5","name":"POWER MIX","category":"powermix","desc":"power mix (Liquid base)","price":0,"inStock":true,"kind":"syrup","pack":"300mls","about":"Fit for life Power mix is a combination designed for men to boost libido, rock hardness , for a complete stay ,stiff and strong erection \npower mix solves sex mal-dysfunction early ejaculation and poor erection \nBuilds broken down sperm ,weak sperms and improves on sperm quality for easily fertilisation.","benefits":"","ingredients":"","storage":"keep in a cool dry place","use":"Take after a snack\nTake twice a day \nCan be taken 8 hours before sex \nCan be take as it is diluted to tea or juice","care":"keep out of reach of children","image":"images/power-mix-5.jpg"},
+{"id":"p-sample-6","name":"Sangoma power mix (powdered)","category":"powermix","desc":"power mix (powdered)","price":0,"inStock":true,"kind":"bottle","pack":"xgrams","about":"Fit for life Power mix is a combination designed for men to boost libido, rock hardness , for a complete stay ,stiff and strong erection \npower mix solves sex mal-dysfunction early ejaculation and poor erection \nBuilds broken down sperm ,weak sperms and improves on sperm quality for easily fertilisation.","benefits":"","ingredients":"","storage":"keep out of reach to children","use":"Take after a snack\nTake twice a day \nCan be taken 8 hours before sex \nCan be take as it is diluted to tea or juice","care":"keep out of reach of children","image":"images/Sangoma power mix.jpg"},
+{"id":"p-7","name":"Sangoma dental care","category":"dental care","desc":"For headache, body ache and fever. Ask which pack size is in stock.","price":null,"inStock":true,"kind":"bottle","pack":"","about":"Paracetamol tablets for relief of headache, toothache, body aches and fever. Ask us which pack size is in stock.","benefits":"toothaches\ngum pain","ingredients":"A mix made from 100% natural herbs from herbal village labs","storage":"keep in a cool dry place","use":"Follow the directions on the pack or the advice of our pharmacist. *Do not use/take more than the pack says*","care":"Keep out of reach of children. Ask a pharmacist or doctor before use if you are pregnant, breastfeeding, taking other medicines or have a long-term illness","image":"images/paracetamol-tablets.jpg"},
+{"id":"p-8","name":"Gyno Formula","category":"women care","desc":"For pain and inflammation. Take with food and ask us if unsure.","price":null,"inStock":true,"kind":"bottle","pack":"","about":"Ibuprofen tablets for pain and inflammation, such as muscle and joint pain or period pain. Not suitable for everyone, so ask our pharmacist if you are unsure.","benefits":"","ingredients":"","storage":"keep in a cool dry place","use":"Follow the directions on the pack or the advice of our pharmacist. Do not take more than the pack says. Take with food.","care":"Keep out of reach of children. Ask a pharmacist or doctor before use if you are pregnant, breastfeeding, taking other medicines or have a long-term illness. See a doctor if symptoms continue. Not suitable for people with stomach ulcers or asthma triggered by painkillers.","image":"images/ibuprofen-tablets.jpg"},
+{"id":"p-9","name":"Pure Rose Mary","category":"health cure","desc":"Dried rosemary leaves","price":null,"inStock":true,"kind":"box","pack":"150grams","about":"","benefits":"natural brain booster","ingredients":"pure rosemary","storage":"keep in cool dry place","use":"Add to warm water","care":"keep in a cool dry place","image":"images/pure-rose-mary-9.jpg"},
+{"id":"p-10","name":"Pure Rose Mary","category":"women care","desc":"dried rosemary leaves","price":null,"inStock":true,"kind":"bottle","pack":"150grams","about":"","benefits":"natural brain booster","ingredients":"","storage":"keep in a cool dry place","use":"Add to warm water","care":"keep away from children reach","image":"images/nasal-spray.jpg"},
+{"id":"p-11","name":"Concocted Men's Herbal beverage","category":"powermix","desc":"Health beverage","price":null,"inStock":true,"kind":"box","pack":"150grams","about":"ideal for strength in men","benefits":"Body boosting","ingredients":"check product label","storage":"keep in a cool dry place","use":"Add a spoonful in a cup of warm water","care":"Keep out of reach of children. Ask our pharmacist before use","image":"images/concocted-men-s-herbal-beverage-1.jpg"},
+{"id":"p-12","name":"Sangoma Twin Tower (1)","category":"women care","desc":"for women and girls","price":null,"inStock":true,"kind":"bottle","pack":"50grams","about":"ideal for preserving the African culture going to the bush","benefits":"Women \nand \nGirls","ingredients":"check product label,","storage":"keep in a cool dry place","use":"Follow the directions on the pack.","care":"Use in the morning and late in the evening\nKeep out of reach of children.","image":"images/sangoma-twin-tower-1-2.jpg"},
+{"id":"p-13","name":"Brain booster","category":"health cure","desc":"fit for life","price":null,"inStock":true,"kind":"bottle","pack":"50grams","about":"ideal for quick memory and speed","benefits":"","ingredients":"shown on the product label","storage":"keep in cool dry place","use":"Follow the directions on the pack.","care":"Do not exceed the stated dose. Keep out of reach of children. Supplements do not replace a varied diet.","image":"images/brain-booster-3.jpg"},
+{"id":"p-14","name":"Moringa leaf powder","category":"health cure","desc":"Dried moringa leaf, ground fine to add to food or drinks.","price":null,"inStock":true,"kind":"herb","pack":"","about":"Dried moringa leaf, ground fine. Stir it into porridge, soups, smoothies or drinks.","benefits":"","ingredients":"","storage":"","use":"Stir a small amount into food or drinks. Follow the pack for how much to use.","care":"Ask a pharmacist or doctor before use if you are pregnant, breastfeeding or taking other medicines. Herbal products do not replace medical treatment.","image":"images/moringa-powder.jpg"},
+{"id":"p-15","name":"Zebra Aloe vera soap","category":"health cure","desc":"A caring soap for dry or sun-tired skin.","price":null,"inStock":true,"kind":"herb","pack":"150grams","about":"ideal for ackne and skin imperfections","benefits":"rushed skin \ndry skin","ingredients":"shown on product label","storage":"keep in a cool dry place","use":"Apply a thin layer to clean, dry skin as needed.","care":"For external use only. Avoid contact with the eyes. Stop use and ask a pharmacist if irritation develops.","image":"images/zebra-aloe-vera-soap-5.jpg"},
+{"id":"p-16","name":"Petroleum jelly","category":"Skin care","desc":"Protects dry, cracked skin and lips.","price":null,"inStock":false,"kind":"box","pack":"","about":"A soft jelly that protects and softens dry, cracked skin, lips and heels.","benefits":"","ingredients":"","storage":"","use":"Apply a thin layer to clean, dry skin as needed.","care":"For external use only. Avoid contact with the eyes. Stop use and ask a pharmacist if irritation develops.","image":"images/petroleum-jelly.jpg"},
+{"id":"p-17","name":"Blackstone","category":"First aid","desc":"For snake bites , insect stings , Dog bites . Sold with or without tape.","price":null,"inStock":true,"kind":"bandage","pack":"","about":"Sterile gauze rolls and medical tape for dressing larger wounds. Sold with or without tape.","benefits":"Animal bites\ninsect bites\nstings","ingredients":"blackstone","storage":"keep in a cool dry place","use":"Place the Blackstone on to the gauze over a clean wound and hold it on to the bite marks and let it atouch for a while untill it detouches. Change it when damp or dirty .","care":"Get medical help for deep wounds or any wound that will not stop bleeding.","image":"images/gauze-and-tape.jpg"}
+]}</script><script type="application/json" id="hv-tpl">{"a":"\u003ctitle>Herbal Village\u003c/title>\n\u003clink rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n\u003clink rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n\u003clink rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Nunito+Sans:wght@400;600;700&display=swap\">\n\u003cstyle>\n/* Layout: one deep-green hero panel (name, promise, live open/closed status), then plain light sections for services, products, weekly hours and contact. Boldness lives in the headline type. */\n:root {\n  --bg: #F4F8EE;\n  --surface: #FFFFFF;\n  --fg: #16261E;\n  --muted: #53665B;\n  --line: #D6E1CE;\n  --soft: #E5EEDC;\n  --panel: #1E5A3E;\n  --on-panel: #F4F8EE;\n  --panel-muted: #BCD6C5;\n  --leaf: #8FCFA9;\n  --gold: #E8A913;\n  --on-gold: #2B1F00;\n  --action: #1E5A3E;\n  --on-action: #F4F8EE;\n  --wa: #0F7A40;\n  --on-wa: #FFFFFF;\n  --wa-light: #4FD58A;\n  --on-wa-light: #07210F;\n  --ok: #1F7A48;\n  --hl: color-mix(in srgb, var(--gold) 38%, transparent);\n  --off: #8A4B2D;\n  --font-display: \"Bricolage Grotesque\", \"Trebuchet MS\", system-ui, sans-serif;\n  --font-body: \"Nunito Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif;\n  --gutter: 20px;\n}\n@media (prefers-color-scheme: dark) {\n  :root:not([data-theme=\"light\"]) {\n    --bg: #0F1A14; --surface: #17261E; --fg: #E6EFE3; --muted: #9DB2A4; --line: #28392F; --soft: #1C2E24;\n    --panel: #173C2A; --on-panel: #EEF5EA; --panel-muted: #A9C8B5; --leaf: #6FBE92;\n    --gold: #EDB02A; --on-gold: #2B1F00; --action: #7FD3A7; --on-action: #0E1B14; --ok: #6FD09B; --off: #E0A07E;\n    --wa: #4FD58A; --on-wa: #07210F;\n    color-scheme: dark;\n  }\n}\n:root[data-theme=\"dark\"] {\n  --bg: #0F1A14; --surface: #17261E; --fg: #E6EFE3; --muted: #9DB2A4; --line: #28392F; --soft: #1C2E24;\n  --panel: #173C2A; --on-panel: #EEF5EA; --panel-muted: #A9C8B5; --leaf: #6FBE92;\n  --gold: #EDB02A; --on-gold: #2B1F00; --action: #7FD3A7; --on-action: #0E1B14; --ok: #6FD09B; --off: #E0A07E;\n  --wa: #4FD58A; --on-wa: #07210F;\n  color-scheme: dark;\n}\n\n* { box-sizing: border-box; }\nbody {\n  background: var(--bg); color: var(--fg);\n  font-family: var(--font-body); font-size: 17px; line-height: 1.6;\n  padding-inline: var(--gutter); padding-block: 0 32px;\n}\nh1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.08; }\np { margin: 0; }\na { color: inherit; }\n:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }\n.wrap { max-width: 1080px; margin-inline: auto; }\n.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }\n\n/* header */\nheader { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 20px; }\n.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 22px; text-decoration: none; letter-spacing: -.01em; }\n.brand svg { width: 30px; height: 30px; flex: none; }\nnav { display: flex; flex-wrap: wrap; gap: 4px 22px; font-weight: 600; font-size: 15px; }\nnav a { text-decoration: none; padding-block: 6px; border-bottom: 2px solid transparent; }\nnav a:hover { border-bottom-color: var(--gold); }\n\n/* hero */\n.hero { background: var(--panel); color: var(--on-panel); border-radius: 28px; padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 32px 48px; align-items: center; }\n.hero .eyebrow { color: var(--gold); }\n.hero h1 { font-size: clamp(2.5rem, 6.4vw, 4.6rem); font-weight: 700; letter-spacing: -.03em; margin-top: 14px; }\n.hero h1 em { font-style: normal; color: var(--gold); }\n.hero .lede { font-size: 1.12rem; color: var(--panel-muted); max-width: 34ch; margin-top: 20px; }\n.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }\n.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 16px; text-decoration: none; border: 2px solid transparent; font-family: var(--font-body); cursor: pointer; }\n.btn-gold { background: var(--gold); color: var(--on-gold); }\n.btn-gold:hover { filter: brightness(1.06); }\n.btn-ghost { border-color: var(--panel-muted); color: var(--on-panel); background: transparent; }\n.btn-ghost:hover { background: rgba(255,255,255,.08); }\n.hero-side { display: flex; flex-direction: column; gap: 18px; align-items: stretch; min-width: 0; }\n.sprig { width: 120px; height: auto; align-self: center; }\n.sprig .stem { stroke: var(--leaf); fill: none; stroke-width: 4; stroke-linecap: round; }\n.sprig .l1 { fill: var(--leaf); }\n.sprig .l2 { fill: var(--gold); }\n.today { background: var(--surface); color: var(--fg); border-radius: 20px; padding: 22px 22px 20px; }\n.today .eyebrow { color: var(--muted); }\n.status { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.55rem; margin-top: 8px; line-height: 1.15; }\n.dot { width: 14px; height: 14px; border-radius: 50%; background: var(--ok); flex: none; box-shadow: 0 0 0 5px color-mix(in srgb, var(--ok) 22%, transparent); }\n.status[data-state=\"closed\"] .dot { background: var(--off); box-shadow: 0 0 0 5px color-mix(in srgb, var(--off) 22%, transparent); }\n.today p.sub { color: var(--muted); font-size: 15px; margin-top: 6px; }\n.today .where { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 15px; }\n\n/* sections */\nsection { padding-block: clamp(48px, 8vw, 88px) 0; }\n.sec-head { display: flex; flex-direction: column; gap: 10px; max-width: 46ch; }\n.sec-head .eyebrow { color: var(--ok); }\n.sec-head h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 700; letter-spacing: -.02em; }\n.sec-head p { color: var(--muted); }\n\n.services { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }\n.services li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 4px 16px; padding-block: 22px; border-top: 1px solid var(--line); }\n.services .ico { width: 40px; height: 40px; border-radius: 12px; background: var(--soft); display: grid; place-items: center; grid-row: span 2; }\n.services .ico svg { width: 22px; height: 22px; fill: var(--ok); }\n.services h3 { font-size: 1.2rem; font-weight: 650; letter-spacing: -.01em; }\n.services p { color: var(--muted); font-size: 16px; }\n\n/* products */\n.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }\n.chip { font-family: var(--font-body); font-weight: 700; font-size: 14.5px; min-height: 40px; padding: 6px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }\n.chip:hover { background: var(--soft); }\n.chip[aria-pressed=\"true\"] { background: var(--action); border-color: var(--action); color: var(--on-action); }\n.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px; margin-top: 20px; }\n.pcard { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }\n.pcard .cat { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ok); }\n.pcard h3 { font-size: 1.15rem; font-weight: 650; letter-spacing: -.01em; overflow-wrap: anywhere; }\n.pcard .desc { color: var(--muted); font-size: 15px; flex: 1; overflow-wrap: anywhere; }\n.pcard .meta { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--line); }\n.price { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; font-variant-numeric: tabular-nums; }\n.price.ask { font-family: var(--font-body); font-weight: 600; font-size: 14.5px; color: var(--muted); }\n.stock { font-size: 13px; font-weight: 700; color: var(--ok); }\n.pcard.oos { background: transparent; border-style: dashed; }\n.pcard.oos .stock { color: var(--off); }\n.pcard.oos h3, .pcard.oos .price { color: var(--muted); }\n.pempty { grid-column: 1 / -1; padding: 28px; border: 1.5px dashed var(--line); border-radius: 16px; color: var(--muted); }\n\n.pimg { aspect-ratio: 4 / 3; max-width: 100%; border-radius: 12px; background: var(--soft); display: grid; place-items: center; margin-bottom: 8px; }\n.pimg { overflow: hidden; }\n.pimg svg { width: 46%; height: auto; max-height: 82%; }\n.pimg img { display: block; width: 100%; height: 100%; object-fit: cover; }\n.thumb { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); }\n.pcard.oos .pimg { opacity: .6; }\n.ph-a { fill: var(--ok); }\n.ph-b { fill: var(--gold); }\n.ph-c { fill: var(--surface); }\n.ph-line { stroke: var(--ok); fill: none; stroke-width: 3; stroke-linecap: round; }\n\n/* product names and product page */\n.fld textarea { min-height: 92px; resize: vertical; line-height: 1.5; }\n.plink { color: inherit; text-decoration: none; }\n.plink::after { content: \" \\2192\"; color: var(--ok); font-weight: 600; }\n.plink:hover { text-decoration: none; }\n.pcard .pimg { cursor: pointer; }\n.detail { padding-top: 8px; }\n.back { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; font-size: 15px; text-decoration: none; border-bottom: 2px solid transparent; }\n.back:hover { border-bottom-color: var(--gold); }\n.dgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px 48px; margin-top: 12px; align-items: start; }\n.dimg { aspect-ratio: 4 / 3; max-width: 100%; border-radius: 22px; background: var(--soft); overflow: hidden; display: grid; place-items: center; }\n.dimg svg { width: 38%; height: auto; max-height: 80%; }\n.dimg img { display: block; width: 100%; height: 100%; object-fit: cover; }\n.dimg.oos { opacity: .65; }\n.dinfo { display: flex; flex-direction: column; gap: 18px; min-width: 0; }\n.dinfo .eyebrow { color: var(--ok); }\n.dinfo h1 { font-size: clamp(2rem, 4.6vw, 3.1rem); font-weight: 700; letter-spacing: -.025em; overflow-wrap: anywhere; }\n.dmeta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }\n.dprice { font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; font-variant-numeric: tabular-nums; }\n.dprice.ask { font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--muted); }\n.pill { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 800; letter-spacing: .04em; background: var(--soft); color: var(--ok); }\n.pill.out { color: var(--off); }\n.dlead { font-size: 1.1rem; max-width: 60ch; overflow-wrap: anywhere; white-space: pre-line; }\n.dfact { display: grid; gap: 10px; margin: 0; padding-block: 14px; border-block: 1px solid var(--line); font-size: 15.5px; }\n.dfact .frow { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 4px 16px; }\n.dfact dt { font-weight: 700; }\n.dfact dd { margin: 0; color: var(--muted); overflow-wrap: anywhere; }\n.dlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; max-width: 60ch; }\n.dlist li { position: relative; padding-left: 26px; color: var(--muted); overflow-wrap: anywhere; }\n.dlist li::before { content: \"\"; position: absolute; left: 2px; top: .5em; width: 10px; height: 10px; border-radius: 50% 0 50% 0; background: var(--ok); }\n.dnote.guide { padding: 12px 14px; border-radius: 12px; background: var(--soft); }\n@media (max-width: 480px) { .dfact .frow { grid-template-columns: minmax(0, 1fr); } }\n.dsec h2 { font-size: 1.2rem; font-weight: 650; letter-spacing: -.01em; margin-bottom: 6px; }\n.dsec p { color: var(--muted); max-width: 60ch; overflow-wrap: anywhere; white-space: pre-line; }\n.dact { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 4px; }\n.dnote { font-size: 14.5px; color: var(--muted); }\n.related { margin-top: clamp(40px, 6vw, 64px); }\n.related h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em; }\n\n/* owner editing */\n.owner-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin-top: 24px; padding: 14px 18px; border-radius: 16px; background: var(--soft); }\n.owner-bar p { font-size: 15px; }\n.notice { margin-top: 16px; padding: 12px 16px; border-radius: 12px; background: var(--surface); border-left: 5px solid var(--gold); font-size: 15px; }\n.editor { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }\n.erow { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px; }\n.fld { display: flex; flex-direction: column; gap: 4px; min-width: 0; }\n.fld.wide { grid-column: 1 / -1; }\n.fld label { font-size: 12.5px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }\n.fld select, .fld textarea, .fld input[type=\"text\"], .fld input[type=\"number\"] { font-family: var(--font-body); font-size: 16px; min-height: 44px; padding: 8px 12px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--bg); color: var(--fg); width: 100%; }\n.erow-foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }\n.check { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15.5px; min-height: 40px; }\n.check input { width: 20px; height: 20px; accent-color: var(--action); }\n.editor-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }\n.msg { font-size: 15px; color: var(--muted); }\n.msg.err { color: var(--off); font-weight: 600; }\n\n/* hours */\n.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; margin-top: 32px; }\n.day { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }\n.day .name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }\n.day .t { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; line-height: 1.35; }\n.day.closed { background: transparent; border-style: dashed; }\n.day.closed .name { color: var(--muted); }\n.day.today-d { border: 2px solid var(--gold); background: var(--surface); }\n.day .tag { display: none; }\n.day.today-d .tag { display: inline-block; align-self: flex-start; background: var(--gold); color: var(--on-gold); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-top: 4px; }\n.tz { margin-top: 14px; font-size: 14px; color: var(--muted); }\n\n/* contact */\n.contact { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }\n.c-item { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }\n.c-item .eyebrow { color: var(--muted); }\n.c-value { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; letter-spacing: -.01em; overflow-wrap: anywhere; user-select: all; }\n.c-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }\n.btn-sm { min-height: 40px; padding: 6px 16px; font-size: 14.5px; }\n.btn-solid { background: var(--action); color: var(--on-action); }\n.btn-solid:hover { filter: brightness(1.08); }\n.btn-solid[disabled] { opacity: .6; cursor: default; }\n.btn-wa { background: var(--wa); color: var(--on-wa); gap: 8px; }\n.btn-wa:hover { filter: brightness(1.08); }\n.btn-wa svg { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }\n.hero .btn-wa { background: var(--wa-light); color: var(--on-wa-light); }\n\n/* social links */\n.social-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 24px; }\n.social-row .eyebrow { color: var(--muted); }\n.socials { display: flex; flex-wrap: wrap; gap: 8px; }\n.socials a { display: inline-flex; align-items: center; min-height: 40px; padding: 6px 16px; border-radius: 999px; border: 1.5px solid var(--line); font-weight: 700; font-size: 14.5px; text-decoration: none; color: var(--fg); background: transparent; }\n.socials a:hover { background: var(--soft); }\nfooter .socials a { min-height: 36px; font-size: 14px; color: var(--muted); }\n\n/* how to order */\n.steps { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; counter-reset: step; }\n.steps li { counter-increment: step; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }\n.steps li::before { content: counter(step); width: 34px; height: 34px; border-radius: 50%; background: var(--soft); color: var(--ok); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; margin-bottom: 6px; }\n.steps h3 { font-size: 1.1rem; font-weight: 650; letter-spacing: -.01em; }\n.steps p { color: var(--muted); font-size: 15.5px; }\n.order-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 24px; }\n.order-cta .num { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; user-select: all; }\n.order-note { margin-top: 14px; font-size: 15px; color: var(--muted); max-width: 62ch; }\n@media (max-width: 960px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }\n@media (max-width: 520px) { .steps { grid-template-columns: minmax(0, 1fr); } }\n.btn-line { border-color: var(--line); background: transparent; color: var(--fg); }\n.btn-line:hover { background: var(--soft); }\n.btn-danger { border-color: var(--line); background: transparent; color: var(--off); }\n.btn-danger:hover { background: var(--soft); }\n\nfooter { margin-top: clamp(48px, 8vw, 88px); padding-top: 24px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 32px; font-size: 14px; color: var(--muted); }\nfooter p { max-width: 58ch; }\n\n@media (max-width: 860px) {\n  .hero { grid-template-columns: minmax(0, 1fr); }\n  .dgrid { grid-template-columns: minmax(0, 1fr); }\n  .sprig { display: none; }\n  .services { grid-template-columns: minmax(0, 1fr); }\n  .contact { grid-template-columns: minmax(0, 1fr); }\n  .week { grid-template-columns: repeat(2, minmax(0, 1fr)); }\n}\n@media (max-width: 700px) {\n  .erow { grid-template-columns: minmax(0, 1fr); }\n}\n@media (max-width: 420px) {\n  body { font-size: 16px; }\n  .hero .btn { width: 100%; }\n}\n/* highlights: text you select, and a marker stroke under names that grows on hover or focus */\n::selection { background: color-mix(in srgb, var(--gold) 60%, transparent); color: inherit; }\n.plink, .services h3 {\n  background-image: linear-gradient(var(--hl), var(--hl));\n  background-repeat: no-repeat; background-position: 0 92%; background-size: 0% 44%;\n  -webkit-box-decoration-break: clone; box-decoration-break: clone;\n}\n.pcard:focus-within .plink, .plink:focus-visible { background-size: 100% 44%; }\n.pcard:focus-within { border-color: var(--gold); box-shadow: 0 0 0 3px var(--hl); }\n.pcard:active { transform: scale(.985); }\n.chip[aria-pressed=\"true\"] { box-shadow: 0 0 0 3px var(--hl); }\n.chip:active, .btn:active { transform: scale(.97); }\nnav a:focus-visible { background: var(--hl); border-bottom-color: var(--gold); border-radius: 8px 8px 0 0; }\n\n/* the same highlights on hover, only for devices with a mouse */\n@media (hover: hover) {\n  .pcard:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 0 0 3px var(--hl), 0 18px 30px -20px color-mix(in srgb, var(--fg) 55%, transparent); }\n  .pcard:hover .plink { background-size: 100% 44%; }\n  .pcard:hover .pimg img { transform: scale(1.05); }\n  .btn:hover { transform: translateY(-1px); }\n  .chip:hover { border-color: var(--gold); }\n  nav a:hover { background: var(--hl); border-radius: 8px 8px 0 0; }\n  .services li:hover h3 { background-size: 100% 44%; }\n  .services li:hover .ico { background: var(--gold); }\n  .services li:hover .ico svg { fill: var(--on-gold); }\n  .steps li:hover, .c-item:hover, .day:hover { border-color: var(--gold); box-shadow: 0 0 0 3px var(--hl); }\n  .steps li:hover::before { background: var(--gold); color: var(--on-gold); }\n  .socials a:hover { border-color: var(--gold); }\n}\n\n/* motion: a short load-in sequence, then cards that rise in one after another */\n@media (prefers-reduced-motion: no-preference) {\n  html { scroll-behavior: smooth; }\n  @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }\n  @keyframes drop { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }\n  @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }\n  @keyframes unfurl { from { opacity: 0; transform: scale(.15) rotate(-10deg); } to { opacity: 1; transform: none; } }\n  @keyframes ring { from { box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 40%, transparent); } to { box-shadow: 0 0 0 12px transparent; } }\n\n  header { animation: drop .5s ease backwards; }\n  .hero > div:first-child > * { animation: rise .8s cubic-bezier(.2, .7, .2, 1) backwards; }\n  .hero > div:first-child > :nth-child(1) { animation-delay: .1s; }\n  .hero > div:first-child > :nth-child(2) { animation-delay: .2s; }\n  .hero > div:first-child > :nth-child(3) { animation-delay: .32s; }\n  .hero > div:first-child > :nth-child(4) { animation-delay: .44s; }\n  .hero .today { animation: rise .8s cubic-bezier(.2, .7, .2, 1) .55s backwards; }\n  .sprig .stem { stroke-dasharray: 1; animation: draw 1s ease-out .25s backwards; }\n  .sprig path:not(.stem) { transform-box: fill-box; animation: unfurl .55s cubic-bezier(.2, .9, .3, 1.25) backwards; }\n  .sprig .l1 { transform-origin: 100% 100%; }\n  .sprig .l2 { transform-origin: 0% 100%; }\n  .sprig path:nth-child(2) { animation-delay: .7s; }\n  .sprig path:nth-child(3) { animation-delay: .85s; }\n  .sprig path:nth-child(4) { animation-delay: 1s; }\n  .sprig path:nth-child(5) { animation-delay: 1.15s; }\n  .status[data-state=\"open\"] .dot { animation: ring 2.4s ease-out 1.2s infinite; }\n\n  /* products: each card rises in turn; --i is the card's position, set by the script */\n  .pgrid .pcard { animation: rise .65s cubic-bezier(.2, .7, .2, 1) backwards; animation-delay: calc(min(var(--i, 0), 11) * 60ms + 150ms); }\n  .pgrid .pcard.wait { animation: none; opacity: 0; transform: translateY(34px); }\n  .pgrid .pcard.wait.in { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }\n  .pcard { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }\n  .pimg img { transition: transform .6s ease; }\n  .plink, .services h3 { transition: background-size .35s ease; }\n  .steps li, .c-item, .day, .services .ico, .socials a, nav a { transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease; }\n  .steps li::before { transition: background-color .2s ease, color .2s ease; }\n  .chip, .btn { transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .15s ease, filter .2s ease; }\n  #detail:not([hidden]) .dgrid { animation: rise .6s cubic-bezier(.2, .7, .2, 1) backwards; }\n}\n\u003c/style>\n\n\u003csvg width=\"0\" height=\"0\" style=\"position:absolute\" aria-hidden=\"true\" focusable=\"false\">\n  \u003csymbol id=\"leaf\" viewBox=\"0 0 24 24\">\u003cpath d=\"M20.5 3.5C11 3.5 4.5 8 4.5 15.2c0 1.1.2 2.1.6 3L3 20.8l1.4 1.2 2.2-2.2c.9.4 1.9.6 3 .6C17.6 20.4 20.5 12.5 20.5 3.5Z\"/>\u003c/symbol>\n  \u003csymbol id=\"ph-bottle\" viewBox=\"0 0 80 80\">\u003crect class=\"ph-b\" x=\"26\" y=\"8\" width=\"28\" height=\"12\" rx=\"4\"/>\u003crect class=\"ph-a\" x=\"22\" y=\"20\" width=\"36\" height=\"52\" rx=\"8\"/>\u003crect class=\"ph-c\" x=\"27\" y=\"32\" width=\"26\" height=\"26\" rx=\"3\"/>\u003cpath class=\"ph-line\" d=\"M40 38v14M33 45h14\"/>\u003c/symbol>\n  \u003csymbol id=\"ph-syrup\" viewBox=\"0 0 80 80\">\u003crect class=\"ph-b\" x=\"31\" y=\"6\" width=\"18\" height=\"10\" rx=\"3\"/>\u003crect class=\"ph-a\" x=\"34\" y=\"16\" width=\"12\" height=\"12\" rx=\"2\"/>\u003crect class=\"ph-a\" x=\"20\" y=\"26\" width=\"40\" height=\"46\" rx=\"10\"/>\u003crect class=\"ph-c\" x=\"25\" y=\"38\" width=\"30\" height=\"24\" rx=\"3\"/>\u003cpath class=\"ph-line\" d=\"M40 43v14M33 50h14\"/>\u003c/symbol>\n  \u003csymbol id=\"ph-box\" viewBox=\"0 0 80 80\">\u003crect class=\"ph-a\" x=\"10\" y=\"24\" width=\"60\" height=\"44\" rx=\"6\"/>\u003crect class=\"ph-b\" x=\"10\" y=\"24\" width=\"60\" height=\"12\" rx=\"4\"/>\u003crect class=\"ph-c\" x=\"22\" y=\"44\" width=\"36\" height=\"16\" rx=\"3\"/>\u003cpath class=\"ph-line\" d=\"M40 47v10M35 52h10\"/>\u003c/symbol>\n  \u003csymbol id=\"ph-herb\" viewBox=\"0 0 80 80\">\u003cpath class=\"ph-line\" d=\"M40 72C39 52 41 30 40 8\"/>\u003cpath class=\"ph-a\" d=\"M40 60C24 59 15 49 14 38c15 2 25 10 26 22Z\"/>\u003cpath class=\"ph-b\" d=\"M40 46c16-1 25-11 26-22-15 2-25 9-26 22Z\"/>\u003cpath class=\"ph-a\" d=\"M40 30C30 29 24 22 23 14c10 1 16 7 17 16Z\"/>\u003c/symbol>\n  \u003csymbol id=\"ph-bandage\" viewBox=\"0 0 80 80\">\u003cg transform=\"rotate(-35 40 40)\">\u003crect class=\"ph-a\" x=\"6\" y=\"26\" width=\"68\" height=\"28\" rx=\"14\"/>\u003crect class=\"ph-b\" x=\"28\" y=\"26\" width=\"24\" height=\"28\"/>\u003ccircle class=\"ph-c\" cx=\"36\" cy=\"34\" r=\"1.8\"/>\u003ccircle class=\"ph-c\" cx=\"44\" cy=\"34\" r=\"1.8\"/>\u003ccircle class=\"ph-c\" cx=\"36\" cy=\"46\" r=\"1.8\"/>\u003ccircle class=\"ph-c\" cx=\"44\" cy=\"46\" r=\"1.8\"/>\u003c/g>\u003c/symbol>\n\u003c/svg>\n\n\u003cdiv class=\"wrap\">\n  \u003cheader>\n    \u003ca class=\"brand\" href=\"#top\" aria-label=\"Herbal Village home\">\n      \u003csvg viewBox=\"0 0 32 32\" aria-hidden=\"true\">\u003ccircle cx=\"16\" cy=\"16\" r=\"16\" fill=\"var(--panel)\"/>\u003cpath d=\"M16 26V9\" stroke=\"var(--leaf)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"/>\u003cpath d=\"M16 17c-4 0-6.600-2.300-6.800-6 3.900.1 6.600 2.200 6.800 6Z\" fill=\"var(--leaf)\"/>\u003cpath d=\"M16 14c4 0 6.600-2.300 6.800-6-3.900.1-6.600 2.200-6.800 6Z\" fill=\"var(--gold)\"/>\u003c/svg>\n      Herbal Village\n    \u003c/a>\n    \u003cnav aria-label=\"Main\">\n      \u003ca href=\"#services\">Services\u003c/a>\n      \u003ca href=\"#products\">Products\u003c/a>\n      \u003ca href=\"#order\">How to order\u003c/a>\n      \u003ca href=\"#hours\">Hours\u003c/a>\n      \u003ca href=\"#contact\">Contact\u003c/a>\n    \u003c/nav>\n  \u003c/header>\n\n  \u003cdiv class=\"detail\" id=\"detail\" hidden>\u003c/div>\n\n  \u003cmain id=\"top\">\n    \u003cdiv class=\"hero\">\n      \u003cdiv>\n        \u003cp class=\"eyebrow\">Pharmacy and distribution · Kampala\u003c/p>\n        \u003ch1>Herbal \u003cem>Village\u003c/em>\u003c/h1>\n        \u003cp class=\"lede\">Medicine you can trust, close to home. We supply medicines and health products to families, clinics and shops across Kampala. Call or come in and ask us anything.\u003c/p>\n        \u003cdiv class=\"actions\">\n          \u003ca class=\"btn btn-gold\" href=\"tel:+256762252774\">Call 0762 252 774\u003c/a>\n          \u003ca class=\"btn btn-wa\" href=\"https://wa.me/256762252774\" data-wa=\"Hello Herbal Village, I would like to place an order.\" target=\"_blank\" rel=\"noopener\">\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\u003cpath d=\"M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.500l1.700-5A8.500 8.500 0 1 1 21 11.500Z\"/>\u003c/svg>Order on WhatsApp\u003c/a>\n          \u003ca class=\"btn btn-ghost\" href=\"#products\">See our products\u003c/a>\n        \u003c/div>\n      \u003c/div>\n      \u003cdiv class=\"hero-side\">\n        \u003csvg class=\"sprig\" viewBox=\"0 0 120 150\" aria-hidden=\"true\">\n          \u003cpath class=\"stem\" pathLength=\"1\" d=\"M60 146C59 110 61 70 60 14\"/>\n          \u003cpath class=\"l1\" d=\"M60 118C34 116 22 98 20 80c24 3 38 18 40 38Z\"/>\n          \u003cpath class=\"l2\" d=\"M60 96c26-2 38-20 40-38-24 3-38 18-40 38Z\"/>\n          \u003cpath class=\"l1\" d=\"M60 70C42 68 33 56 32 43c17 2 27 13 28 27Z\"/>\n          \u003cpath class=\"l2\" d=\"M60 46c14-2 22-12 23-23-14 2-22 9-23 23Z\"/>\n        \u003c/svg>\n        \u003cdiv class=\"today\" aria-live=\"polite\">\n          \u003cp class=\"eyebrow\">Right now in Kampala\u003c/p>\n          \u003cp class=\"status\" id=\"status\" data-state=\"open\">\u003cspan class=\"dot\">\u003c/span>\u003cspan id=\"status-text\">Open Monday to Friday\u003c/span>\u003c/p>\n          \u003cp class=\"sub\" id=\"status-sub\">8:00 am to 5:30 pm\u003c/p>\n          \u003cp class=\"where\">Herbal Village, Kampala, Uganda\u003c/p>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003csection id=\"services\">\n      \u003cdiv class=\"sec-head\">\n        \u003cp class=\"eyebrow\">What we do\u003c/p>\n        \u003ch2>Everyday medicine and bulk supply\u003c/h2>\n        \u003cp>Whether you need one box for the family or a regular order for a clinic, we can help.\u003c/p>\n      \u003c/div>\n      \u003cul class=\"services\">\n        \u003cli>\u003cspan class=\"ico\">\u003csvg aria-hidden=\"true\">\u003cuse href=\"#leaf\"/>\u003c/svg>\u003c/span>\u003ch3>Prescription medicines\u003c/h3>\u003cp>Bring your prescription and we will fill it.\u003c/p>\u003c/li>\n        \u003cli>\u003cspan class=\"ico\">\u003csvg aria-hidden=\"true\">\u003cuse href=\"#leaf\"/>\u003c/svg>\u003c/span>\u003ch3>Over-the-counter remedies\u003c/h3>\u003cp>Pain relief, cold and flu, stomach and skin care.\u003c/p>\u003c/li>\n        \u003cli>\u003cspan class=\"ico\">\u003csvg aria-hidden=\"true\">\u003cuse href=\"#leaf\"/>\u003c/svg>\u003c/span>\u003ch3>Herbal and wellness products\u003c/h3>\u003cp>Natural health products for daily use.\u003c/p>\u003c/li>\n        \u003cli>\u003cspan class=\"ico\">\u003csvg aria-hidden=\"true\">\u003cuse href=\"#leaf\"/>\u003c/svg>\u003c/span>\u003ch3>Wholesale and bulk supply\u003c/h3>\u003cp>Regular stock for clinics, shops and institutions.\u003c/p>\u003c/li>\n        \u003cli>\u003cspan class=\"ico\">\u003csvg aria-hidden=\"true\">\u003cuse href=\"#leaf\"/>\u003c/svg>\u003c/span>\u003ch3>Delivery around Kampala\u003c/h3>\u003cp>Call us to arrange a delivery to your door.\u003c/p>\u003c/li>\n        \u003cli>\u003cspan class=\"ico\">\u003csvg aria-hidden=\"true\">\u003cuse href=\"#leaf\"/>\u003c/svg>\u003c/span>\u003ch3>Help with your medicine\u003c/h3>\u003cp>Ask how to take it, what to avoid and when to see a doctor.\u003c/p>\u003c/li>\n      \u003c/ul>\n    \u003c/section>\n\n    \u003csection id=\"products\">\n      \u003cdiv class=\"sec-head\">\n        \u003cp class=\"eyebrow\">Our products\u003c/p>\n        \u003ch2>What we sell\u003c/h2>\n        \u003cp>Prices are in Ugandan shillings. Stock changes, so call us to confirm before you come.\u003c/p>\n      \u003c/div>\n\n      \u003cdiv class=\"owner-bar\" id=\"owner-bar\" hidden>\n        \u003cp>You can edit this page. Add, change or remove products here.\u003c/p>\n        \u003cbutton class=\"btn btn-sm btn-solid\" type=\"button\" id=\"edit-btn\">Edit products\u003c/button>\n      \u003c/div>\n      \u003cp class=\"notice\" id=\"sample-note\" hidden>These are sample products so you can see how the list looks. Visitors do not see them yet. Replace them with what you stock, then save.\u003c/p>\n\n      \u003cdiv id=\"view\">\n        \u003cdiv class=\"chips\" id=\"chips\" role=\"group\" aria-label=\"Filter products by category\" hidden>\u003c/div>\n        \u003cdiv class=\"pgrid\" id=\"pgrid\">\u003cp class=\"pempty\">Our product list is being updated. Call us on 0762 252 774 to ask what is in stock.\u003c/p>\u003c/div>\n      \u003c/div>\n\n      \u003cdiv class=\"editor\" id=\"editor\" hidden>\n        \u003cdatalist id=\"cat-list\">\u003c/datalist>\n        \u003cdiv id=\"erows\" class=\"editor\">\u003c/div>\n        \u003cdiv class=\"editor-actions\">\n          \u003cbutton class=\"btn btn-sm btn-line\" type=\"button\" id=\"add-btn\">Add a product\u003c/button>\n        \u003c/div>\n        \u003cdiv class=\"editor-actions\">\n          \u003cbutton class=\"btn btn-sm btn-solid\" type=\"button\" id=\"save-btn\">Save and publish\u003c/button>\n          \u003cbutton class=\"btn btn-sm btn-line\" type=\"button\" id=\"cancel-btn\">Cancel\u003c/button>\n          \u003cspan class=\"msg\" id=\"edit-msg\" role=\"status\" aria-live=\"polite\">\u003c/span>\n        \u003c/div>\n      \u003c/div>\n    \u003c/section>\n\n    \u003csection id=\"order\">\n      \u003cdiv class=\"sec-head\">\n        \u003cp class=\"eyebrow\">How to order\u003c/p>\n        \u003ch2>Order in four steps\u003c/h2>\n        \u003cp>You do not need an account. Tell us what you need and we will take care of the rest.\u003c/p>\n      \u003c/div>\n      \u003col class=\"steps\">\n        \u003cli>\u003ch3>Pick your products\u003c/h3>\u003cp>Look through the list above and note the product names and how many you need.\u003c/p>\u003c/li>\n        \u003cli>\u003ch3>Message us\u003c/h3>\u003cp>Tap Order on WhatsApp on any product page and the message is already written for you. You can also call us during opening hours.\u003c/p>\u003c/li>\n        \u003cli>\u003ch3>We confirm\u003c/h3>\u003cp>We reply with stock, price and how you can pay.\u003c/p>\u003c/li>\n        \u003cli>\u003ch3>Receive your order\u003c/h3>\u003cp>Collect it from us in Kampala, or ask for delivery around Kampala. Clinics and shops can ask about bulk supply.\u003c/p>\u003c/li>\n      \u003c/ol>\n      \u003cdiv class=\"order-cta\">\n        \u003ca class=\"btn btn-wa\" href=\"https://wa.me/256762252774\" data-wa=\"Hello Herbal Village, I would like to place an order.\" target=\"_blank\" rel=\"noopener\">\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\u003cpath d=\"M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.500l1.700-5A8.500 8.500 0 1 1 21 11.500Z\"/>\u003c/svg>Order on WhatsApp\u003c/a>\n        \u003cspan class=\"num\">0762 252 774\u003c/span>\n      \u003c/div>\n      \u003cp class=\"order-note\">The WhatsApp button opens a chat with us if WhatsApp is on your phone or computer. If it does not open, message or call 0762 252 774 and give us the product names.\u003c/p>\n    \u003c/section>\n\n    \u003csection id=\"hours\">\n      \u003cdiv class=\"sec-head\">\n        \u003cp class=\"eyebrow\">Opening hours\u003c/p>\n        \u003ch2>Open weekdays, 8:00 am to 5:30 pm\u003c/h2>\n        \u003cp>We are closed on Saturday and Sunday.\u003c/p>\n      \u003c/div>\n      \u003cdiv class=\"week\" id=\"week\">\n        \u003cdiv class=\"day\" data-d=\"1\">\u003cspan class=\"name\">Monday\u003c/span>\u003cspan class=\"t\">8:00 am to 5:30 pm\u003c/span>\u003cspan class=\"tag\">Today\u003c/span>\u003c/div>\n        \u003cdiv class=\"day\" data-d=\"2\">\u003cspan class=\"name\">Tuesday\u003c/span>\u003cspan class=\"t\">8:00 am to 5:30 pm\u003c/span>\u003cspan class=\"tag\">Today\u003c/span>\u003c/div>\n        \u003cdiv class=\"day\" data-d=\"3\">\u003cspan class=\"name\">Wednesday\u003c/span>\u003cspan class=\"t\">8:00 am to 5:30 pm\u003c/span>\u003cspan class=\"tag\">Today\u003c/span>\u003c/div>\n        \u003cdiv class=\"day\" data-d=\"4\">\u003cspan class=\"name\">Thursday\u003c/span>\u003cspan class=\"t\">8:00 am to 5:30 pm\u003c/span>\u003cspan class=\"tag\">Today\u003c/span>\u003c/div>\n        \u003cdiv class=\"day\" data-d=\"5\">\u003cspan class=\"name\">Friday\u003c/span>\u003cspan class=\"t\">8:00 am to 5:30 pm\u003c/span>\u003cspan class=\"tag\">Today\u003c/span>\u003c/div>\n        \u003cdiv class=\"day closed\" data-d=\"6\">\u003cspan class=\"name\">Saturday\u003c/span>\u003cspan class=\"t\">Closed\u003c/span>\u003cspan class=\"tag\">Today\u003c/span>\u003c/div>\n        \u003cdiv class=\"day closed\" data-d=\"0\">\u003cspan class=\"name\">Sunday\u003c/span>\u003cspan class=\"t\">Closed\u003c/span>\u003cspan class=\"tag\">Today\u003c/span>\u003c/div>\n      \u003c/div>\n      \u003cp class=\"tz\">All times are East Africa Time (Kampala).\u003c/p>\n    \u003c/section>\n\n    \u003csection id=\"contact\">\n      \u003cdiv class=\"sec-head\">\n        \u003cp class=\"eyebrow\">Get in touch\u003c/p>\n        \u003ch2>Call, write or visit\u003c/h2>\n        \u003cp>The quickest way to reach us is by phone during opening hours.\u003c/p>\n      \u003c/div>\n      \u003cdiv class=\"contact\">\n        \u003cdiv class=\"c-item\">\n          \u003cp class=\"eyebrow\">Phone and WhatsApp\u003c/p>\n          \u003cp class=\"c-value\" id=\"phone\">0762 252 774\u003c/p>\n          \u003cdiv class=\"c-actions\">\n            \u003ca class=\"btn btn-sm btn-solid\" href=\"tel:+256762252774\">Call now\u003c/a>\n            \u003ca class=\"btn btn-sm btn-wa\" href=\"https://wa.me/256762252774\" data-wa=\"Hello Herbal Village, I have a question.\" target=\"_blank\" rel=\"noopener\">WhatsApp\u003c/a>\n            \u003cbutton class=\"btn btn-sm btn-line\" type=\"button\" data-copy=\"0762252774\" id=\"copy-phone\">Copy number\u003c/button>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"c-item\">\n          \u003cp class=\"eyebrow\">Email\u003c/p>\n          \u003cp class=\"c-value\" id=\"email\">herbalvillagedc@gmail.com\u003c/p>\n          \u003cdiv class=\"c-actions\">\n            \u003ca class=\"btn btn-sm btn-solid\" href=\"mailto:herbalvillagedc@gmail.com\">Write to us\u003c/a>\n            \u003cbutton class=\"btn btn-sm btn-line\" type=\"button\" data-copy=\"herbalvillagedc@gmail.com\" id=\"copy-email\">Copy address\u003c/button>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"c-item\">\n          \u003cp class=\"eyebrow\">Find us\u003c/p>\n          \u003cp class=\"c-value\">Kampala, Uganda\u003c/p>\n          \u003cp style=\"color:var(--muted);font-size:15px\">Monday to Friday, 8:00 am to 5:30 pm\u003c/p>\n        \u003c/div>\n      \u003c/div>\n      \u003cdiv class=\"social-row\">\n        \u003cp class=\"eyebrow\">Social media\u003c/p>\n        \u003cnav class=\"socials\" aria-label=\"Social media\">\n          \u003ca href=\"https://www.facebook.com/\" data-social=\"facebook\" target=\"_blank\" rel=\"noopener\">Facebook\u003c/a>\n          \u003ca href=\"https://www.instagram.com/\" data-social=\"instagram\" target=\"_blank\" rel=\"noopener\">Instagram\u003c/a>\n          \u003ca href=\"https://www.tiktok.com/\" data-social=\"tiktok\" target=\"_blank\" rel=\"noopener\">TikTok\u003c/a>\n        \u003c/nav>\n      \u003c/div>\n    \u003c/section>\n  \u003c/main>\n\n  \u003cfooter>\n    \u003cp>The information on this page is general. It does not replace advice from a doctor or pharmacist.\u003c/p>\n    \u003cnav class=\"socials\" aria-label=\"Social media links\">\n      \u003ca href=\"https://www.facebook.com/\" data-social=\"facebook\" target=\"_blank\" rel=\"noopener\">Facebook\u003c/a>\n      \u003ca href=\"https://www.instagram.com/\" data-social=\"instagram\" target=\"_blank\" rel=\"noopener\">Instagram\u003c/a>\n      \u003ca href=\"https://www.tiktok.com/\" data-social=\"tiktok\" target=\"_blank\" rel=\"noopener\">TikTok\u003c/a>\n    \u003c/nav>\n    \u003cp>© 2026 Herbal Village, Kampala\u003c/p>\n  \u003c/footer>\n\u003c/div>\n\n","b":"\n\u003cscript>\n(function () {\n  /* ---------- opening hours and status ---------- */\n  var OPEN = 8 * 60, CLOSE = 17 * 60 + 30;\n  var names = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];\n\n  function nowInKampala() {\n    try {\n      var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Kampala', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());\n      var o = {}; parts.forEach(function (p) { o[p.type] = p.value; });\n      var wd = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[o.weekday];\n      var h = parseInt(o.hour, 10) % 24, m = parseInt(o.minute, 10);\n      if (isNaN(wd) || isNaN(h) || isNaN(m)) return null;\n      return { day: wd, mins: h * 60 + m };\n    } catch (e) { return null; }\n  }\n  function isWeekday(d) { return d >= 1 && d \u003c= 5; }\n\n  function renderStatus() {\n    var t = nowInKampala();\n    if (!t) return;\n    var text, sub, state;\n    if (isWeekday(t.day) && t.mins >= OPEN && t.mins \u003c CLOSE) {\n      state = 'open'; text = 'Open now'; sub = 'Open until 5:30 pm today';\n    } else {\n      state = 'closed'; text = 'Closed now';\n      if (isWeekday(t.day) && t.mins \u003c OPEN) sub = 'Opens today at 8:00 am';\n      else {\n        var next = (t.day + 1) % 7, add = 1;\n        while (!isWeekday(next)) { next = (next + 1) % 7; add++; }\n        sub = 'Opens ' + (add === 1 ? 'tomorrow' : names[next]) + ' at 8:00 am';\n      }\n    }\n    document.getElementById('status').setAttribute('data-state', state);\n    document.getElementById('status-text').textContent = text;\n    document.getElementById('status-sub').textContent = sub;\n    var days = document.querySelectorAll('.day');\n    for (var i = 0; i \u003c days.length; i++) {\n      days[i].classList.toggle('today-d', parseInt(days[i].getAttribute('data-d'), 10) === t.day);\n    }\n  }\n  renderStatus();\n  setInterval(renderStatus, 60000);\n\n  /* ---------- copy buttons ---------- */\n  function wireCopy(btnId, targetId) {\n    var btn = document.getElementById(btnId), target = document.getElementById(targetId);\n    if (!btn || !target) return;\n    var label = btn.textContent;\n    function select() {\n      var r = document.createRange(); r.selectNodeContents(target);\n      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);\n    }\n    btn.addEventListener('click', function () {\n      function done(ok) {\n        btn.textContent = ok ? 'Copied' : 'Selected, press copy';\n        setTimeout(function () { btn.textContent = label; }, 1800);\n      }\n      try {\n        navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function () { done(true); }, function () { select(); done(false); });\n      } catch (e) { select(); done(false); }\n    });\n  }\n  wireCopy('copy-phone', 'phone');\n  wireCopy('copy-email', 'email');\n\n  /* ---------- products ---------- */\n  function readJSON(id, fallback) {\n    try { return JSON.parse(document.getElementById(id).textContent); } catch (e) { return fallback; }\n  }\n  var state = readJSON('hv-data', { sample: false, products: [] });\n  if (!state || !state.products) state = { sample: false, products: [] };\n  var tpl = readJSON('hv-tpl', null);\n\n  var canEdit = false, artifactNs = null, activeCat = '', draft = null, saving = false;\n  var $ = function (id) { return document.getElementById(id); };\n\n  function mk(tag, cls, text) {\n    var e = document.createElement(tag);\n    if (cls) e.className = cls;\n    if (text != null) e.textContent = text;\n    return e;\n  }\n  function fmtPrice(n) { return 'UGX ' + Number(n).toLocaleString('en-US'); }\n\n  /* ---------- WhatsApp: change the number here, in international format with no + or spaces ---------- */\n  var WA_NUMBER = '256762252774';\n  function waLink(message) { return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message); }\n  function wireWhatsApp() {\n    var links = document.querySelectorAll('a[data-wa]');\n    for (var i = 0; i \u003c links.length; i++) links[i].href = waLink(links[i].getAttribute('data-wa'));\n  }\n\n  /* ---------- Social media: replace each address with Herbal Village's own profile link ---------- */\n  var SOCIAL = {\n    facebook: 'https://www.facebook.com/',\n    instagram: 'https://www.instagram.com/',\n    tiktok: 'https://www.tiktok.com/'\n  };\n  function wireSocial() {\n    var links = document.querySelectorAll('a[data-social]');\n    for (var i = 0; i \u003c links.length; i++) {\n      var url = SOCIAL[links[i].getAttribute('data-social')];\n      if (url) links[i].href = url;\n    }\n  }\n  function newId() { return 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }\n\n  function categories(list) {\n    var seen = {}, out = [];\n    list.forEach(function (p) {\n      var c = (p.category || '').trim();\n      if (c && !seen[c]) { seen[c] = 1; out.push(c); }\n    });\n    return out;\n  }\n\n  var KINDS = [['bottle', 'Pill bottle'], ['syrup', 'Syrup bottle'], ['box', 'Box or pack'], ['herb', 'Herbal'], ['bandage', 'First aid']];\n  function kindOf(p) {\n    for (var i = 0; i \u003c KINDS.length; i++) if (KINDS[i][0] === p.kind) return p.kind;\n    return 'box';\n  }\n\n  function visibleList() {\n    return (state.sample && !canEdit) ? [] : state.products.filter(function (p) { return p.name; });\n  }\n\n  function buildPic(p, cls) {\n    var pic = mk('div', cls);\n    function showPlaceholder() {\n      pic.textContent = '';\n      pic.setAttribute('role', 'img');\n      pic.setAttribute('aria-label', 'Placeholder picture for ' + p.name);\n      pic.innerHTML = '\u003csvg viewBox=\"0 0 80 80\" aria-hidden=\"true\">\u003cuse href=\"#ph-' + kindOf(p) + '\"/>\u003c/svg>';\n    }\n    var src = (p.image || '').trim();\n    if (src) {\n      var im = document.createElement('img');\n      im.alt = p.name;\n      im.loading = 'lazy';\n      im.addEventListener('error', showPlaceholder);\n      im.src = src;\n      pic.appendChild(im);\n    } else {\n      showPlaceholder();\n    }\n    return pic;\n  }\n\n  function productHash(id) { return '#product-' + encodeURIComponent(id); }\n\n  function buildCard(p, position) {\n    var card = mk('article', 'pcard' + (p.inStock === false ? ' oos' : ''));\n    /* position feeds the CSS entrance delay: card 0 first, card 1 a moment later, and so on */\n    if (typeof position === 'number') card.style.setProperty('--i', position);\n    var pic = buildPic(p, 'pimg');\n    pic.addEventListener('click', function () { openProduct(p.id); });\n    card.appendChild(pic);\n    if (p.category) card.appendChild(mk('p', 'cat', p.category));\n    var h = mk('h3');\n    var a = mk('a', 'plink', p.name);\n    a.href = productHash(p.id);\n    a.addEventListener('click', function (e) { e.preventDefault(); openProduct(p.id); });\n    h.appendChild(a);\n    card.appendChild(h);\n    if (p.desc) card.appendChild(mk('p', 'desc', p.desc));\n    var meta = mk('div', 'meta');\n    if (typeof p.price === 'number' && p.price > 0) meta.appendChild(mk('span', 'price', fmtPrice(p.price)));\n    else meta.appendChild(mk('span', 'price ask', 'Ask for price'));\n    meta.appendChild(mk('span', 'stock', p.inStock === false ? 'Out of stock' : 'In stock'));\n    card.appendChild(meta);\n    return card;\n  }\n\n  /* ---------- product page: opens when a product name is clicked ---------- */\n  var currentId = null;\n\n  function infoSection(title, text) {\n    var d = mk('div', 'dsec');\n    d.appendChild(mk('h2', '', title));\n    d.appendChild(mk('p', '', text));\n    return d;\n  }\n\n  function showProduct(id) {\n    var list = visibleList(), p = null;\n    list.forEach(function (x) { if (x.id === id) p = x; });\n    if (!p) { if (currentId !== null) showList(''); return; }\n    var d = $('detail');\n    if (currentId === id && !d.hidden) return;\n    currentId = id;\n    d.textContent = '';\n\n    var back = mk('a', 'back', '← All products');\n    back.href = '#products';\n    back.addEventListener('click', function (e) { e.preventDefault(); goBack('products'); });\n    d.appendChild(back);\n\n    var grid = mk('div', 'dgrid');\n    grid.appendChild(buildPic(p, 'dimg' + (p.inStock === false ? ' oos' : '')));\n\n    var info = mk('div', 'dinfo');\n    if (p.category) info.appendChild(mk('p', 'eyebrow', p.category));\n    info.appendChild(mk('h1', '', p.name));\n    var meta = mk('div', 'dmeta');\n    if (typeof p.price === 'number' && p.price > 0) meta.appendChild(mk('span', 'dprice', fmtPrice(p.price)));\n    else meta.appendChild(mk('span', 'dprice ask', 'Ask for price'));\n    meta.appendChild(mk('span', 'pill' + (p.inStock === false ? ' out' : ''), p.inStock === false ? 'Out of stock' : 'In stock'));\n    info.appendChild(meta);\n\n    var lead = (p.about || p.desc || '').trim();\n    if (lead) info.appendChild(mk('p', 'dlead', lead));\n\n    /* \"Good for\": one line per item in the editor becomes one bullet here */\n    var goodFor = (p.benefits || '').split('\\n').map(function (s) { return s.trim(); }).filter(Boolean);\n    if (goodFor.length) {\n      var gf = mk('div', 'dsec');\n      gf.appendChild(mk('h2', '', 'Good for'));\n      var ul = mk('ul', 'dlist');\n      goodFor.forEach(function (item) { ul.appendChild(mk('li', '', item)); });\n      gf.appendChild(ul);\n      info.appendChild(gf);\n    }\n\n    /* quick facts: only the rows that have a value are shown */\n    var facts = [['Pack size', p.pack], ['Ingredients', p.ingredients], ['Storage', p.storage]]\n      .filter(function (row) { return (row[1] || '').trim(); });\n    if (facts.length) {\n      var f = mk('dl', 'dfact');\n      facts.forEach(function (row) {\n        var r = mk('div', 'frow');\n        r.appendChild(mk('dt', '', row[0]));\n        r.appendChild(mk('dd', '', row[1].trim()));\n        f.appendChild(r);\n      });\n      info.appendChild(f);\n    }\n\n    if ((p.use || '').trim()) info.appendChild(infoSection('How to use', p.use.trim()));\n    if ((p.care || '').trim()) info.appendChild(infoSection('Safety information', p.care.trim()));\n    info.appendChild(mk('p', 'dnote guide', 'This page is general guidance and does not replace advice from a doctor or pharmacist. If you are pregnant, breastfeeding, taking other medicine or have a health condition, ask our pharmacist before use.'));\n\n    var act = mk('div', 'dact');\n    if (p.inStock !== false) {\n      var wa = mk('a', 'btn btn-wa');\n      wa.innerHTML = '\u003csvg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\u003cpath d=\"M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5A8.5 8.5 0 1 1 21 11.5Z\"/>\u003c/svg>';\n      wa.appendChild(document.createTextNode('Order on WhatsApp'));\n      wa.href = waLink('Hello Herbal Village, I would like to order: ' + p.name + ((p.pack || '').trim() ? ' (' + p.pack.trim() + ')' : '') + '. Please tell me the price and if it is in stock.');\n      wa.target = '_blank';\n      wa.rel = 'noopener';\n      act.appendChild(wa);\n    }\n    var call = mk('a', 'btn btn-solid', 'Call to ask about this product');\n    call.href = 'tel:+256762252774';\n    act.appendChild(call);\n    var mail = mk('a', 'btn btn-line', 'Email us');\n    mail.href = 'mailto:herbalvillagedc@gmail.com?subject=' + encodeURIComponent('Question about ' + p.name);\n    act.appendChild(mail);\n    info.appendChild(act);\n    info.appendChild(mk('p', 'dnote', 'Phone 0762 252 774. Stock changes, so call us to confirm before you come. Open Monday to Friday, 8:00 am to 5:30 pm.'));\n    grid.appendChild(info);\n    d.appendChild(grid);\n\n    var cat = (p.category || '').trim();\n    var rel = list.filter(function (x) { return x.id !== p.id && cat && (x.category || '').trim() === cat; }).slice(0, 3);\n    if (rel.length) {\n      var box = mk('div', 'related');\n      box.appendChild(mk('h2', '', 'More in ' + cat));\n      var rg = mk('div', 'pgrid');\n      rel.forEach(function (x) { rg.appendChild(buildCard(x)); });\n      box.appendChild(rg);\n      d.appendChild(box);\n    }\n\n    $('top').hidden = true;\n    d.hidden = false;\n    document.title = p.name + ' | Herbal Village';\n    window.scrollTo(0, 0);\n  }\n\n  function showList(hash) {\n    currentId = null;\n    $('detail').hidden = true;\n    $('top').hidden = false;\n    document.title = 'Herbal Village';\n    var el = null;\n    try { if (hash && hash.length > 1) el = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (e) {}\n    if (el && el.scrollIntoView) el.scrollIntoView(); else window.scrollTo(0, 0);\n  }\n\n  function openProduct(id) {\n    try { location.hash = productHash(id); } catch (e) {}\n    showProduct(id);\n  }\n  function goBack(target) {\n    try { location.hash = target; } catch (e) {}\n    if (currentId !== null) showList('#' + target);\n  }\n  function route() {\n    var h = '';\n    try { h = location.hash || ''; } catch (e) {}\n    var m = /^#product-(.+)$/.exec(h);\n    if (m) {\n      var id = m[1];\n      try { id = decodeURIComponent(m[1]); } catch (e) {}\n      showProduct(id);\n    } else if (currentId !== null) {\n      showList(h);\n    }\n  }\n  window.addEventListener('hashchange', route);\n\n  /* Cards that start below the visible screen wait quietly, then rise in as they scroll into view.\n     Cards already on screen use the load-in animation instead. Without motion support, or with\n     \"reduce motion\" switched on, nothing waits and every card is simply there. */\n  function revealCards(root) {\n    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;\n    if (reduce || !('IntersectionObserver' in window)) return;\n    var io = new IntersectionObserver(function (entries) {\n      var k = 0;\n      entries.forEach(function (en) {\n        if (!en.isIntersecting) return;\n        var card = en.target;\n        io.unobserve(card);\n        card.style.transitionDelay = (k * 90) + 'ms';\n        k++;\n        card.classList.add('in');\n        setTimeout(function () {\n          card.classList.remove('wait', 'in');\n          card.style.transitionDelay = '';\n        }, 1100 + k * 90);\n      });\n    }, { threshold: 0.08 });\n    var cards = root.querySelectorAll('.pcard');\n    for (var i = 0; i \u003c cards.length; i++) {\n      if (cards[i].getBoundingClientRect().top > window.innerHeight) {\n        cards[i].classList.add('wait');\n        io.observe(cards[i]);\n      }\n    }\n  }\n\n  function renderPublic() {\n    var grid = $('pgrid'), chips = $('chips');\n    var list = visibleList();\n    grid.textContent = ''; chips.textContent = '';\n\n    if (!list.length) {\n      grid.appendChild(mk('p', 'pempty', 'Our product list is being updated. Call us on 0762 252 774 to ask what is in stock.'));\n      chips.hidden = true;\n      return;\n    }\n    var cats = categories(list);\n    if (cats.indexOf(activeCat) \u003c 0) activeCat = '';\n    chips.hidden = cats.length \u003c 2;\n    if (!chips.hidden) {\n      ['All'].concat(cats).forEach(function (c) {\n        var val = c === 'All' ? '' : c;\n        var b = mk('button', 'chip', c);\n        b.type = 'button';\n        b.setAttribute('aria-pressed', activeCat === val ? 'true' : 'false');\n        b.addEventListener('click', function () { activeCat = val; renderPublic(); });\n        chips.appendChild(b);\n      });\n    }\n    list.filter(function (p) { return !activeCat || (p.category || '').trim() === activeCat; }).forEach(function (p, i) {\n      grid.appendChild(buildCard(p, i));\n    });\n    revealCards(grid);\n  }\n\n  /* ---------- owner editor ---------- */\n  function setMsg(text, isErr) {\n    var m = $('edit-msg');\n    m.textContent = text || '';\n    m.className = 'msg' + (isErr ? ' err' : '');\n  }\n\n  function field(cls, id, labelText, input) {\n    var f = mk('div', 'fld' + (cls ? ' ' + cls : ''));\n    var l = mk('label', '', labelText); l.setAttribute('for', id);\n    input.id = id;\n    f.appendChild(l); f.appendChild(input);\n    return f;\n  }\n  function textInput(value, onInput, ph) {\n    var i = document.createElement('input');\n    i.type = 'text'; i.value = value || ''; if (ph) i.placeholder = ph;\n    i.addEventListener('input', function () { onInput(i.value); });\n    return i;\n  }\n\n  function textArea(value, onInput, ph) {\n    var t = document.createElement('textarea');\n    t.rows = 3; t.value = value || ''; if (ph) t.placeholder = ph;\n    t.addEventListener('input', function () { onInput(t.value); });\n    return t;\n  }\n\n  function renderEditor(focusId) {\n    var rows = $('erows');\n    rows.textContent = '';\n    var dl = $('cat-list'); dl.textContent = '';\n    categories(draft).forEach(function (c) { var o = document.createElement('option'); o.value = c; dl.appendChild(o); });\n\n    if (!draft.length) rows.appendChild(mk('p', 'pempty', 'No products yet. Choose \"Add a product\" to start your list.'));\n\n    draft.forEach(function (p) {\n      var row = mk('div', 'erow');\n      row.appendChild(field('', 'e-name-' + p.id, 'Product name', textInput(p.name, function (v) { p.name = v; }, 'For example, Paracetamol tablets')));\n      var cat = textInput(p.category, function (v) { p.category = v; }, 'For example, Pain relief');\n      cat.setAttribute('list', 'cat-list');\n      row.appendChild(field('', 'e-cat-' + p.id, 'Category', cat));\n      var price = document.createElement('input');\n      price.type = 'number'; price.min = '0'; price.step = '100'; price.inputMode = 'numeric'; price.placeholder = 'Leave empty to ask';\n      price.value = (typeof p.price === 'number') ? String(p.price) : '';\n      price.addEventListener('input', function () { p.price = price.value === '' ? null : Number(price.value); });\n      row.appendChild(field('', 'e-price-' + p.id, 'Price (UGX)', price));\n      row.appendChild(field('wide', 'e-desc-' + p.id, 'Short description', textInput(p.desc, function (v) { p.desc = v; }, 'One line customers will read')));\n      row.appendChild(field('wide', 'e-about-' + p.id, 'Full description (shown on the product page)', textArea(p.about, function (v) { p.about = v; }, 'What it is and what it is used for')));\n      row.appendChild(field('wide', 'e-pack-' + p.id, 'Pack size (shown on the product page)', textInput(p.pack, function (v) { p.pack = v; }, 'For example, 20 tablets')));\n      row.appendChild(field('wide', 'e-ben-' + p.id, 'Good for (one item per line, shown as a list on the product page)', textArea(p.benefits, function (v) { p.benefits = v; }, 'For example:\\nSeasonal cough\\nChest congestion')));\n      row.appendChild(field('wide', 'e-ing-' + p.id, 'Ingredients (shown on the product page)', textInput(p.ingredients, function (v) { p.ingredients = v; }, 'For example, 100% dried moringa leaf')));\n      row.appendChild(field('wide', 'e-sto-' + p.id, 'Storage (shown on the product page)', textInput(p.storage, function (v) { p.storage = v; }, 'For example, Keep in a cool, dry place')));\n      row.appendChild(field('wide', 'e-use-' + p.id, 'How to use (shown on the product page)', textArea(p.use, function (v) { p.use = v; }, 'Directions for use')));\n      row.appendChild(field('wide', 'e-care-' + p.id, 'Safety information (shown on the product page)', textArea(p.care, function (v) { p.care = v; }, 'Warnings and who should ask before use')));\n      var hasData = /^data:image\\//.test(p.image || '');\n      row.appendChild(field('wide', 'e-img-' + p.id, 'Image path or link (optional)', textInput(hasData ? '' : p.image, function (v) { p.image = v; }, hasData ? 'An uploaded photo is in use. Type a path here to replace it.' : 'For example, images/paracetamol.jpg')));\n\n      var upRow = mk('div', 'erow-foot');\n      var upLeft = mk('div', 'editor-actions');\n      var file = document.createElement('input');\n      file.type = 'file'; file.accept = 'image/*'; file.id = 'e-file-' + p.id; file.hidden = true;\n      file.addEventListener('change', function () { if (file.files && file.files[0]) handleFile(p, file.files[0]); });\n      var upBtn = mk('button', 'btn btn-sm btn-line', hasData ? 'Replace photo' : 'Upload photo');\n      upBtn.type = 'button'; upBtn.id = 'e-up-' + p.id;\n      upBtn.addEventListener('click', function () { file.click(); });\n      upLeft.appendChild(upBtn); upLeft.appendChild(file);\n      if (hasData) {\n        var th = document.createElement('img');\n        th.className = 'thumb'; th.src = p.image; th.alt = 'Uploaded photo of ' + (p.name || 'this product');\n        upLeft.appendChild(th);\n      }\n      if (p.image) {\n        var rm = mk('button', 'btn btn-sm btn-danger', 'Remove photo');\n        rm.type = 'button'; rm.id = 'e-rmimg-' + p.id;\n        rm.addEventListener('click', function () { p.image = ''; renderEditor('e-up-' + p.id); });\n        upLeft.appendChild(rm);\n      }\n      upRow.appendChild(upLeft);\n      row.appendChild(upRow);\n\n      var foot = mk('div', 'erow-foot');\n      var sel = document.createElement('select');\n      KINDS.forEach(function (k) {\n        var o = document.createElement('option'); o.value = k[0]; o.textContent = k[1];\n        if (kindOf(p) === k[0]) o.selected = true;\n        sel.appendChild(o);\n      });\n      sel.addEventListener('change', function () { p.kind = sel.value; });\n      foot.appendChild(field('', 'e-kind-' + p.id, 'Placeholder picture', sel));\n      var chk = mk('label', 'check');\n      var cb = document.createElement('input');\n      cb.type = 'checkbox'; cb.id = 'e-stock-' + p.id; cb.checked = p.inStock !== false;\n      cb.addEventListener('change', function () { p.inStock = cb.checked; });\n      chk.appendChild(cb); chk.appendChild(document.createTextNode('In stock'));\n      foot.appendChild(chk);\n      var del = mk('button', 'btn btn-sm btn-danger', 'Remove');\n      del.type = 'button'; del.id = 'e-del-' + p.id;\n      del.setAttribute('aria-label', 'Remove ' + (p.name || 'this product'));\n      del.addEventListener('click', function () {\n        draft = draft.filter(function (x) { return x.id !== p.id; });\n        renderEditor();\n      });\n      foot.appendChild(del);\n      row.appendChild(foot);\n      rows.appendChild(row);\n    });\n    if (focusId && $(focusId)) $(focusId).focus();\n  }\n\n  /* Resize an uploaded photo to at most 640px and keep it inside the page as a small JPEG. */\n  function handleFile(p, f) {\n    if (!/^image\\//.test(f.type)) { setMsg('Choose a picture file, such as a JPG or PNG.', true); return; }\n    setMsg('Preparing photo…');\n    var url = URL.createObjectURL(f), im = new Image();\n    im.onload = function () {\n      var w = im.naturalWidth, h = im.naturalHeight, k = Math.min(1, 640 / Math.max(w, h));\n      var c = document.createElement('canvas');\n      c.width = Math.max(1, Math.round(w * k)); c.height = Math.max(1, Math.round(h * k));\n      var ctx = c.getContext('2d');\n      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, c.width, c.height);\n      ctx.drawImage(im, 0, 0, c.width, c.height);\n      var out = '';\n      try { out = c.toDataURL('image/jpeg', 0.82); } catch (e) {}\n      URL.revokeObjectURL(url);\n      if (!out || out.indexOf('data:image/jpeg') !== 0) { setMsg('That picture could not be prepared. Try a different file.', true); return; }\n      p.image = out;\n      setMsg('Photo added. Press Save and publish to keep it.');\n      renderEditor('e-up-' + p.id);\n    };\n    im.onerror = function () { URL.revokeObjectURL(url); setMsg('That file could not be read as a picture. Try a JPG or PNG.', true); };\n    im.src = url;\n  }\n\n  function openEditor() {\n    draft = state.products.map(function (p) {\n      return { id: p.id || newId(), name: p.name || '', category: p.category || '', desc: p.desc || '', price: (typeof p.price === 'number') ? p.price : null, inStock: p.inStock !== false, kind: kindOf(p), pack: p.pack || '', about: p.about || '', benefits: p.benefits || '', ingredients: p.ingredients || '', storage: p.storage || '', use: p.use || '', care: p.care || '', image: p.image || '' };\n    });\n    $('view').hidden = true; $('editor').hidden = false; $('owner-bar').hidden = true;\n    $('sample-note').hidden = !state.sample;\n    setMsg('');\n    renderEditor();\n  }\n  function closeEditor() {\n    draft = null;\n    $('editor').hidden = true; $('view').hidden = false; $('owner-bar').hidden = !canEdit;\n    $('sample-note').hidden = !(canEdit && state.sample);\n    renderPublic();\n  }\n\n  /* ---------- saving: the page rebuilds itself and publishes ---------- */\n  function jsonBlock(id, obj) {\n    return '\u003cscript type=\"application/json\" id=\"' + id + '\">' + JSON.stringify(obj).replace(/\u003c/g, '\\\\u003c') + '\u003c\\/script>';\n  }\n  function resetCss() {\n    try {\n      var s = document.head.querySelector('style');\n      var css = s && s.textContent;\n      if (css && css.indexOf('safe-area-inset-top') > -1 && css.indexOf('[hidden]') > -1) return css;\n    } catch (e) {}\n    return ':root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}';\n  }\n  function buildDoc(nextState) {\n    return '\u003c!doctype html>\u003chtml>\u003chead>\u003cmeta charset=utf8>\u003cmeta name=viewport content=\"width=device-width,initial-scale=1,viewport-fit=cover\">\u003cstyle>' +\n      resetCss() + '\u003c/style>\u003c/head>\u003cbody>' + tpl.a + jsonBlock('hv-data', nextState) + jsonBlock('hv-tpl', tpl) + tpl.b + '\u003c/body>\u003c/html>';\n  }\n\n  function save() {\n    if (saving) return;\n    var items = [], bad = null;\n    draft.forEach(function (p) {\n      var name = (p.name || '').trim(), cat = (p.category || '').trim(), desc = (p.desc || '').trim();\n      if (!name && !cat && !desc && p.price == null) return;\n      if (!name) { bad = bad || p; return; }\n      items.push({ id: p.id, name: name, category: cat, desc: desc, price: (typeof p.price === 'number' && isFinite(p.price) && p.price >= 0) ? Math.round(p.price) : null, inStock: p.inStock !== false, kind: kindOf(p), pack: (p.pack || '').trim(), about: (p.about || '').trim(), benefits: (p.benefits || '').trim(), ingredients: (p.ingredients || '').trim(), storage: (p.storage || '').trim(), use: (p.use || '').trim(), care: (p.care || '').trim(), image: (p.image || '').trim() });\n    });\n    if (bad) { setMsg('Every product needs a name. Add one or remove the empty product.', true); $('e-name-' + bad.id).focus(); return; }\n    if (!artifactNs || !tpl) { setMsg('Saving is not available in this view. Open the page from your own account to edit it.', true); return; }\n\n    saving = true; $('save-btn').disabled = true; setMsg('Saving…');\n    var next = { sample: false, products: items };\n    var doc;\n    try { doc = buildDoc(next); } catch (e) { saving = false; $('save-btn').disabled = false; setMsg('Something went wrong preparing the page. Your changes are still here, try again.', true); return; }\n    artifactNs.publish(doc).then(function () {\n      setMsg('Saved. The page is reloading.');\n    }, function (err) {\n      saving = false; $('save-btn').disabled = false;\n      var code = err && err.code;\n      if (code === 'conflict') setMsg('Someone saved a newer version first. The page is reloading with their changes. Make your edits again.', true);\n      else if (code === 'not_writer' || code === 'not_granted' || code === 'consent_required') setMsg('You can view this page but not change it. Ask the owner for edit access.', true);\n      else if (code === 'rate_limited') setMsg('You are saving too fast. Wait a moment and try again.', true);\n      else if (code === 'too_large') setMsg('The page is too large to save. Remove some products or shorten descriptions.', true);\n      else setMsg('The page could not be saved. Your changes are still here, try again.', true);\n    });\n  }\n\n  $('edit-btn').addEventListener('click', openEditor);\n  $('cancel-btn').addEventListener('click', closeEditor);\n  $('save-btn').addEventListener('click', save);\n  $('add-btn').addEventListener('click', function () {\n    var p = { id: newId(), name: '', category: '', desc: '', price: null, inStock: true, kind: 'box', pack: '', about: '', benefits: '', ingredients: '', storage: '', use: '', care: '', image: '' };\n    draft.push(p);\n    renderEditor('e-name-' + p.id);\n  });\n\n  wireWhatsApp();\n  wireSocial();\n  renderPublic();\n  route();\n\n  /* ---------- who is looking: only people who can edit see the editor ---------- */\n  (function init() {\n    if (!window.claude || !window.claude.use || !tpl) return;\n    Promise.all([window.claude.use('user'), window.claude.use('artifact')]).then(function (r) {\n      var user = r[0]; artifactNs = r[1];\n      if (!user || !artifactNs) return;\n      return user.canEdit().then(function (ok) {\n        if (!ok) return;\n        canEdit = true;\n        $('owner-bar').hidden = false;\n        $('sample-note').hidden = !state.sample;\n        renderPublic();\n      });\n    }).catch(function () {});\n  })();\n})();\n\u003c/script>\n"}</script>
+<script>
+(function () {
+  /* ---------- opening hours and status ---------- */
+  var OPEN = 8 * 60, CLOSE = 17 * 60 + 30;
+  var names = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  function nowInKampala() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Kampala', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+      var o = {}; parts.forEach(function (p) { o[p.type] = p.value; });
+      var wd = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[o.weekday];
+      var h = parseInt(o.hour, 10) % 24, m = parseInt(o.minute, 10);
+      if (isNaN(wd) || isNaN(h) || isNaN(m)) return null;
+      return { day: wd, mins: h * 60 + m };
+    } catch (e) { return null; }
+  }
+  function isWeekday(d) { return d >= 1 && d <= 5; }
+
+  function renderStatus() {
+    var t = nowInKampala();
+    if (!t) return;
+    var text, sub, state;
+    if (isWeekday(t.day) && t.mins >= OPEN && t.mins < CLOSE) {
+      state = 'open'; text = 'Open now'; sub = 'Open until 5:30 pm today';
+    } else {
+      state = 'closed'; text = 'Closed now';
+      if (isWeekday(t.day) && t.mins < OPEN) sub = 'Opens today at 8:00 am';
+      else {
+        var next = (t.day + 1) % 7, add = 1;
+        while (!isWeekday(next)) { next = (next + 1) % 7; add++; }
+        sub = 'Opens ' + (add === 1 ? 'tomorrow' : names[next]) + ' at 8:00 am';
+      }
+    }
+    document.getElementById('status').setAttribute('data-state', state);
+    document.getElementById('status-text').textContent = text;
+    document.getElementById('status-sub').textContent = sub;
+    var days = document.querySelectorAll('.day');
+    for (var i = 0; i < days.length; i++) {
+      days[i].classList.toggle('today-d', parseInt(days[i].getAttribute('data-d'), 10) === t.day);
+    }
+  }
+  renderStatus();
+  setInterval(renderStatus, 60000);
+
+  /* ---------- copy buttons ---------- */
+  function wireCopy(btnId, targetId) {
+    var btn = document.getElementById(btnId), target = document.getElementById(targetId);
+    if (!btn || !target) return;
+    var label = btn.textContent;
+    function select() {
+      var r = document.createRange(); r.selectNodeContents(target);
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    }
+    btn.addEventListener('click', function () {
+      function done(ok) {
+        btn.textContent = ok ? 'Copied' : 'Selected, press copy';
+        setTimeout(function () { btn.textContent = label; }, 1800);
+      }
+      try {
+        navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function () { done(true); }, function () { select(); done(false); });
+      } catch (e) { select(); done(false); }
+    });
+  }
+  wireCopy('copy-phone', 'phone');
+  wireCopy('copy-email', 'email');
+
+  /* ---------- products ---------- */
+  function readJSON(id, fallback) {
+    try { return JSON.parse(document.getElementById(id).textContent); } catch (e) { return fallback; }
+  }
+  var state = readJSON('hv-data', { sample: false, products: [] });
+  if (!state || !state.products) state = { sample: false, products: [] };
+  var tpl = readJSON('hv-tpl', null);
+
+  var canEdit = false, artifactNs = null, activeCat = '', draft = null, saving = false;
+  var $ = function (id) { return document.getElementById(id); };
+
+  function mk(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function fmtPrice(n) { return 'UGX ' + Number(n).toLocaleString('en-US'); }
+
+  /* ---------- WhatsApp: change the number here, in international format with no + or spaces ---------- */
+  var WA_NUMBER = '256762252774';
+  function waLink(message) { return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message); }
+  function wireWhatsApp() {
+    var links = document.querySelectorAll('a[data-wa]');
+    for (var i = 0; i < links.length; i++) links[i].href = waLink(links[i].getAttribute('data-wa'));
+  }
+
+  /* ---------- Social media: replace each address with Herbal Village's own profile link ---------- */
+  var SOCIAL = {
+    facebook: 'https://www.facebook.com/',
+    instagram: 'https://www.instagram.com/',
+    tiktok: 'https://www.tiktok.com/'
+  };
+  function wireSocial() {
+    var links = document.querySelectorAll('a[data-social]');
+    for (var i = 0; i < links.length; i++) {
+      var url = SOCIAL[links[i].getAttribute('data-social')];
+      if (url) links[i].href = url;
+    }
+  }
+  function newId() { return 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+
+  function categories(list) {
+    var seen = {}, out = [];
+    list.forEach(function (p) {
+      var c = (p.category || '').trim();
+      if (c && !seen[c]) { seen[c] = 1; out.push(c); }
+    });
+    return out;
+  }
+
+  var KINDS = [['bottle', 'Pill bottle'], ['syrup', 'Syrup bottle'], ['box', 'Box or pack'], ['herb', 'Herbal'], ['bandage', 'First aid']];
+  function kindOf(p) {
+    for (var i = 0; i < KINDS.length; i++) if (KINDS[i][0] === p.kind) return p.kind;
+    return 'box';
+  }
+
+  function visibleList() {
+    return (state.sample && !canEdit) ? [] : state.products.filter(function (p) { return p.name; });
+  }
+
+  function buildPic(p, cls) {
+    var pic = mk('div', cls);
+    function showPlaceholder() {
+      pic.textContent = '';
+      pic.setAttribute('role', 'img');
+      pic.setAttribute('aria-label', 'Placeholder picture for ' + p.name);
+      pic.innerHTML = '<svg viewBox="0 0 80 80" aria-hidden="true"><use href="#ph-' + kindOf(p) + '"/></svg>';
+    }
+    var src = (p.image || '').trim();
+    if (src) {
+      var im = document.createElement('img');
+      im.alt = p.name;
+      im.loading = 'lazy';
+      im.addEventListener('error', showPlaceholder);
+      im.src = src;
+      pic.appendChild(im);
+    } else {
+      showPlaceholder();
+    }
+    return pic;
+  }
+
+  function productHash(id) { return '#product-' + encodeURIComponent(id); }
+
+  function buildCard(p, position) {
+    var card = mk('article', 'pcard' + (p.inStock === false ? ' oos' : ''));
+    /* position feeds the CSS entrance delay: card 0 first, card 1 a moment later, and so on */
+    if (typeof position === 'number') card.style.setProperty('--i', position);
+    var pic = buildPic(p, 'pimg');
+    pic.addEventListener('click', function () { openProduct(p.id); });
+    card.appendChild(pic);
+    if (p.category) card.appendChild(mk('p', 'cat', p.category));
+    var h = mk('h3');
+    var a = mk('a', 'plink', p.name);
+    a.href = productHash(p.id);
+    a.addEventListener('click', function (e) { e.preventDefault(); openProduct(p.id); });
+    h.appendChild(a);
+    card.appendChild(h);
+    if (p.desc) card.appendChild(mk('p', 'desc', p.desc));
+    var meta = mk('div', 'meta');
+    if (typeof p.price === 'number' && p.price > 0) meta.appendChild(mk('span', 'price', fmtPrice(p.price)));
+    else meta.appendChild(mk('span', 'price ask', 'Ask for price'));
+    meta.appendChild(mk('span', 'stock', p.inStock === false ? 'Out of stock' : 'In stock'));
+    card.appendChild(meta);
+    return card;
+  }
+
+  /* ---------- product page: opens when a product name is clicked ---------- */
+  var currentId = null;
+
+  function infoSection(title, text) {
+    var d = mk('div', 'dsec');
+    d.appendChild(mk('h2', '', title));
+    d.appendChild(mk('p', '', text));
+    return d;
+  }
+
+  function showProduct(id) {
+    var list = visibleList(), p = null;
+    list.forEach(function (x) { if (x.id === id) p = x; });
+    if (!p) { if (currentId !== null) showList(''); return; }
+    var d = $('detail');
+    if (currentId === id && !d.hidden) return;
+    currentId = id;
+    d.textContent = '';
+
+    var back = mk('a', 'back', '← All products');
+    back.href = '#products';
+    back.addEventListener('click', function (e) { e.preventDefault(); goBack('products'); });
+    d.appendChild(back);
+
+    var grid = mk('div', 'dgrid');
+    grid.appendChild(buildPic(p, 'dimg' + (p.inStock === false ? ' oos' : '')));
+
+    var info = mk('div', 'dinfo');
+    if (p.category) info.appendChild(mk('p', 'eyebrow', p.category));
+    info.appendChild(mk('h1', '', p.name));
+    var meta = mk('div', 'dmeta');
+    if (typeof p.price === 'number' && p.price > 0) meta.appendChild(mk('span', 'dprice', fmtPrice(p.price)));
+    else meta.appendChild(mk('span', 'dprice ask', 'Ask for price'));
+    meta.appendChild(mk('span', 'pill' + (p.inStock === false ? ' out' : ''), p.inStock === false ? 'Out of stock' : 'In stock'));
+    info.appendChild(meta);
+
+    var lead = (p.about || p.desc || '').trim();
+    if (lead) info.appendChild(mk('p', 'dlead', lead));
+
+    /* "Good for": one line per item in the editor becomes one bullet here */
+    var goodFor = (p.benefits || '').split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+    if (goodFor.length) {
+      var gf = mk('div', 'dsec');
+      gf.appendChild(mk('h2', '', 'Good for'));
+      var ul = mk('ul', 'dlist');
+      goodFor.forEach(function (item) { ul.appendChild(mk('li', '', item)); });
+      gf.appendChild(ul);
+      info.appendChild(gf);
+    }
+
+    /* quick facts: only the rows that have a value are shown */
+    var facts = [['Pack size', p.pack], ['Ingredients', p.ingredients], ['Storage', p.storage]]
+      .filter(function (row) { return (row[1] || '').trim(); });
+    if (facts.length) {
+      var f = mk('dl', 'dfact');
+      facts.forEach(function (row) {
+        var r = mk('div', 'frow');
+        r.appendChild(mk('dt', '', row[0]));
+        r.appendChild(mk('dd', '', row[1].trim()));
+        f.appendChild(r);
+      });
+      info.appendChild(f);
+    }
+
+    if ((p.use || '').trim()) info.appendChild(infoSection('How to use', p.use.trim()));
+    if ((p.care || '').trim()) info.appendChild(infoSection('Safety information', p.care.trim()));
+    info.appendChild(mk('p', 'dnote guide', 'This page is general guidance and does not replace advice from a doctor or pharmacist. If you are pregnant, breastfeeding, taking other medicine or have a health condition, ask our pharmacist before use.'));
+
+    var act = mk('div', 'dact');
+    if (p.inStock !== false) {
+      var wa = mk('a', 'btn btn-wa');
+      wa.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5A8.5 8.5 0 1 1 21 11.5Z"/></svg>';
+      wa.appendChild(document.createTextNode('Order on WhatsApp'));
+      wa.href = waLink('Hello Herbal Village, I would like to order: ' + p.name + ((p.pack || '').trim() ? ' (' + p.pack.trim() + ')' : '') + '. Please tell me the price and if it is in stock.');
+      wa.target = '_blank';
+      wa.rel = 'noopener';
+      act.appendChild(wa);
+    }
+    var call = mk('a', 'btn btn-solid', 'Call to ask about this product');
+    call.href = 'tel:+256762252774';
+    act.appendChild(call);
+    var mail = mk('a', 'btn btn-line', 'Email us');
+    mail.href = 'mailto:herbalvillagedc@gmail.com?subject=' + encodeURIComponent('Question about ' + p.name);
+    act.appendChild(mail);
+    info.appendChild(act);
+    info.appendChild(mk('p', 'dnote', 'Phone 0762 252 774. Stock changes, so call us to confirm before you come. Open Monday to Friday, 8:00 am to 5:30 pm.'));
+    grid.appendChild(info);
+    d.appendChild(grid);
+
+    var cat = (p.category || '').trim();
+    var rel = list.filter(function (x) { return x.id !== p.id && cat && (x.category || '').trim() === cat; }).slice(0, 3);
+    if (rel.length) {
+      var box = mk('div', 'related');
+      box.appendChild(mk('h2', '', 'More in ' + cat));
+      var rg = mk('div', 'pgrid');
+      rel.forEach(function (x) { rg.appendChild(buildCard(x)); });
+      box.appendChild(rg);
+      d.appendChild(box);
+    }
+
+    $('top').hidden = true;
+    d.hidden = false;
+    document.title = p.name + ' | Herbal Village';
+    window.scrollTo(0, 0);
+  }
+
+  function showList(hash) {
+    currentId = null;
+    $('detail').hidden = true;
+    $('top').hidden = false;
+    document.title = 'Herbal Village';
+    var el = null;
+    try { if (hash && hash.length > 1) el = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (e) {}
+    if (el && el.scrollIntoView) el.scrollIntoView(); else window.scrollTo(0, 0);
+  }
+
+  function openProduct(id) {
+    try { location.hash = productHash(id); } catch (e) {}
+    showProduct(id);
+  }
+  function goBack(target) {
+    try { location.hash = target; } catch (e) {}
+    if (currentId !== null) showList('#' + target);
+  }
+  function route() {
+    var h = '';
+    try { h = location.hash || ''; } catch (e) {}
+    var m = /^#product-(.+)$/.exec(h);
+    if (m) {
+      var id = m[1];
+      try { id = decodeURIComponent(m[1]); } catch (e) {}
+      showProduct(id);
+    } else if (currentId !== null) {
+      showList(h);
+    }
+  }
+  window.addEventListener('hashchange', route);
+
+  /* Cards that start below the visible screen wait quietly, then rise in as they scroll into view.
+     Cards already on screen use the load-in animation instead. Without motion support, or with
+     "reduce motion" switched on, nothing waits and every card is simply there. */
+  function revealCards(root) {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      var k = 0;
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var card = en.target;
+        io.unobserve(card);
+        card.style.transitionDelay = (k * 90) + 'ms';
+        k++;
+        card.classList.add('in');
+        setTimeout(function () {
+          card.classList.remove('wait', 'in');
+          card.style.transitionDelay = '';
+        }, 1100 + k * 90);
+      });
+    }, { threshold: 0.08 });
+    var cards = root.querySelectorAll('.pcard');
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i].getBoundingClientRect().top > window.innerHeight) {
+        cards[i].classList.add('wait');
+        io.observe(cards[i]);
+      }
+    }
+  }
+
+  function renderPublic() {
+    var grid = $('pgrid'), chips = $('chips');
+    var list = visibleList();
+    grid.textContent = ''; chips.textContent = '';
+
+    if (!list.length) {
+      grid.appendChild(mk('p', 'pempty', 'Our product list is being updated. Call us on 0762 252 774 to ask what is in stock.'));
+      chips.hidden = true;
+      return;
+    }
+    var cats = categories(list);
+    if (cats.indexOf(activeCat) < 0) activeCat = '';
+    chips.hidden = cats.length < 2;
+    if (!chips.hidden) {
+      ['All'].concat(cats).forEach(function (c) {
+        var val = c === 'All' ? '' : c;
+        var b = mk('button', 'chip', c);
+        b.type = 'button';
+        b.setAttribute('aria-pressed', activeCat === val ? 'true' : 'false');
+        b.addEventListener('click', function () { activeCat = val; renderPublic(); });
+        chips.appendChild(b);
+      });
+    }
+    list.filter(function (p) { return !activeCat || (p.category || '').trim() === activeCat; }).forEach(function (p, i) {
+      grid.appendChild(buildCard(p, i));
+    });
+    revealCards(grid);
+  }
+
+  /* ---------- owner editor ---------- */
+  function setMsg(text, isErr) {
+    var m = $('edit-msg');
+    m.textContent = text || '';
+    m.className = 'msg' + (isErr ? ' err' : '');
+  }
+
+  function field(cls, id, labelText, input) {
+    var f = mk('div', 'fld' + (cls ? ' ' + cls : ''));
+    var l = mk('label', '', labelText); l.setAttribute('for', id);
+    input.id = id;
+    f.appendChild(l); f.appendChild(input);
+    return f;
+  }
+  function textInput(value, onInput, ph) {
+    var i = document.createElement('input');
+    i.type = 'text'; i.value = value || ''; if (ph) i.placeholder = ph;
+    i.addEventListener('input', function () { onInput(i.value); });
+    return i;
+  }
+
+  function textArea(value, onInput, ph) {
+    var t = document.createElement('textarea');
+    t.rows = 3; t.value = value || ''; if (ph) t.placeholder = ph;
+    t.addEventListener('input', function () { onInput(t.value); });
+    return t;
+  }
+
+  function renderEditor(focusId) {
+    var rows = $('erows');
+    rows.textContent = '';
+    var dl = $('cat-list'); dl.textContent = '';
+    categories(draft).forEach(function (c) { var o = document.createElement('option'); o.value = c; dl.appendChild(o); });
+
+    if (!draft.length) rows.appendChild(mk('p', 'pempty', 'No products yet. Choose "Add a product" to start your list.'));
+
+    draft.forEach(function (p) {
+      var row = mk('div', 'erow');
+      row.appendChild(field('', 'e-name-' + p.id, 'Product name', textInput(p.name, function (v) { p.name = v; }, 'For example, Paracetamol tablets')));
+      var cat = textInput(p.category, function (v) { p.category = v; }, 'For example, Pain relief');
+      cat.setAttribute('list', 'cat-list');
+      row.appendChild(field('', 'e-cat-' + p.id, 'Category', cat));
+      var price = document.createElement('input');
+      price.type = 'number'; price.min = '0'; price.step = '100'; price.inputMode = 'numeric'; price.placeholder = 'Leave empty to ask';
+      price.value = (typeof p.price === 'number') ? String(p.price) : '';
+      price.addEventListener('input', function () { p.price = price.value === '' ? null : Number(price.value); });
+      row.appendChild(field('', 'e-price-' + p.id, 'Price (UGX)', price));
+      row.appendChild(field('wide', 'e-desc-' + p.id, 'Short description', textInput(p.desc, function (v) { p.desc = v; }, 'One line customers will read')));
+      row.appendChild(field('wide', 'e-about-' + p.id, 'Full description (shown on the product page)', textArea(p.about, function (v) { p.about = v; }, 'What it is and what it is used for')));
+      row.appendChild(field('wide', 'e-pack-' + p.id, 'Pack size (shown on the product page)', textInput(p.pack, function (v) { p.pack = v; }, 'For example, 20 tablets')));
+      row.appendChild(field('wide', 'e-ben-' + p.id, 'Good for (one item per line, shown as a list on the product page)', textArea(p.benefits, function (v) { p.benefits = v; }, 'For example:\nSeasonal cough\nChest congestion')));
+      row.appendChild(field('wide', 'e-ing-' + p.id, 'Ingredients (shown on the product page)', textInput(p.ingredients, function (v) { p.ingredients = v; }, 'For example, 100% dried moringa leaf')));
+      row.appendChild(field('wide', 'e-sto-' + p.id, 'Storage (shown on the product page)', textInput(p.storage, function (v) { p.storage = v; }, 'For example, Keep in a cool, dry place')));
+      row.appendChild(field('wide', 'e-use-' + p.id, 'How to use (shown on the product page)', textArea(p.use, function (v) { p.use = v; }, 'Directions for use')));
+      row.appendChild(field('wide', 'e-care-' + p.id, 'Safety information (shown on the product page)', textArea(p.care, function (v) { p.care = v; }, 'Warnings and who should ask before use')));
+      var hasData = /^data:image\//.test(p.image || '');
+      row.appendChild(field('wide', 'e-img-' + p.id, 'Image path or link (optional)', textInput(hasData ? '' : p.image, function (v) { p.image = v; }, hasData ? 'An uploaded photo is in use. Type a path here to replace it.' : 'For example, images/paracetamol.jpg')));
+
+      var upRow = mk('div', 'erow-foot');
+      var upLeft = mk('div', 'editor-actions');
+      var file = document.createElement('input');
+      file.type = 'file'; file.accept = 'image/*'; file.id = 'e-file-' + p.id; file.hidden = true;
+      file.addEventListener('change', function () { if (file.files && file.files[0]) handleFile(p, file.files[0]); });
+      var upBtn = mk('button', 'btn btn-sm btn-line', hasData ? 'Replace photo' : 'Upload photo');
+      upBtn.type = 'button'; upBtn.id = 'e-up-' + p.id;
+      upBtn.addEventListener('click', function () { file.click(); });
+      upLeft.appendChild(upBtn); upLeft.appendChild(file);
+      if (hasData) {
+        var th = document.createElement('img');
+        th.className = 'thumb'; th.src = p.image; th.alt = 'Uploaded photo of ' + (p.name || 'this product');
+        upLeft.appendChild(th);
+      }
+      if (p.image) {
+        var rm = mk('button', 'btn btn-sm btn-danger', 'Remove photo');
+        rm.type = 'button'; rm.id = 'e-rmimg-' + p.id;
+        rm.addEventListener('click', function () { p.image = ''; renderEditor('e-up-' + p.id); });
+        upLeft.appendChild(rm);
+      }
+      upRow.appendChild(upLeft);
+      row.appendChild(upRow);
+
+      var foot = mk('div', 'erow-foot');
+      var sel = document.createElement('select');
+      KINDS.forEach(function (k) {
+        var o = document.createElement('option'); o.value = k[0]; o.textContent = k[1];
+        if (kindOf(p) === k[0]) o.selected = true;
+        sel.appendChild(o);
+      });
+      sel.addEventListener('change', function () { p.kind = sel.value; });
+      foot.appendChild(field('', 'e-kind-' + p.id, 'Placeholder picture', sel));
+      var chk = mk('label', 'check');
+      var cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.id = 'e-stock-' + p.id; cb.checked = p.inStock !== false;
+      cb.addEventListener('change', function () { p.inStock = cb.checked; });
+      chk.appendChild(cb); chk.appendChild(document.createTextNode('In stock'));
+      foot.appendChild(chk);
+      var del = mk('button', 'btn btn-sm btn-danger', 'Remove');
+      del.type = 'button'; del.id = 'e-del-' + p.id;
+      del.setAttribute('aria-label', 'Remove ' + (p.name || 'this product'));
+      del.addEventListener('click', function () {
+        draft = draft.filter(function (x) { return x.id !== p.id; });
+        renderEditor();
+      });
+      foot.appendChild(del);
+      row.appendChild(foot);
+      rows.appendChild(row);
+    });
+    if (focusId && $(focusId)) $(focusId).focus();
+  }
+
+  /* Resize an uploaded photo to at most 640px and keep it inside the page as a small JPEG. */
+  function handleFile(p, f) {
+    if (!/^image\//.test(f.type)) { setMsg('Choose a picture file, such as a JPG or PNG.', true); return; }
+    setMsg('Preparing photo…');
+    var url = URL.createObjectURL(f), im = new Image();
+    im.onload = function () {
+      var w = im.naturalWidth, h = im.naturalHeight, k = Math.min(1, 640 / Math.max(w, h));
+      var c = document.createElement('canvas');
+      c.width = Math.max(1, Math.round(w * k)); c.height = Math.max(1, Math.round(h * k));
+      var ctx = c.getContext('2d');
+      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, c.width, c.height);
+      ctx.drawImage(im, 0, 0, c.width, c.height);
+      var out = '';
+      try { out = c.toDataURL('image/jpeg', 0.82); } catch (e) {}
+      URL.revokeObjectURL(url);
+      if (!out || out.indexOf('data:image/jpeg') !== 0) { setMsg('That picture could not be prepared. Try a different file.', true); return; }
+      p.image = out;
+      setMsg('Photo added. Press Save and publish to keep it.');
+      renderEditor('e-up-' + p.id);
+    };
+    im.onerror = function () { URL.revokeObjectURL(url); setMsg('That file could not be read as a picture. Try a JPG or PNG.', true); };
+    im.src = url;
+  }
+
+  function openEditor() {
+    draft = state.products.map(function (p) {
+      return { id: p.id || newId(), name: p.name || '', category: p.category || '', desc: p.desc || '', price: (typeof p.price === 'number') ? p.price : null, inStock: p.inStock !== false, kind: kindOf(p), pack: p.pack || '', about: p.about || '', benefits: p.benefits || '', ingredients: p.ingredients || '', storage: p.storage || '', use: p.use || '', care: p.care || '', image: p.image || '' };
+    });
+    $('view').hidden = true; $('editor').hidden = false; $('owner-bar').hidden = true;
+    $('sample-note').hidden = !state.sample;
+    setMsg('');
+    renderEditor();
+  }
+  function closeEditor() {
+    draft = null;
+    $('editor').hidden = true; $('view').hidden = false; $('owner-bar').hidden = !canEdit;
+    $('sample-note').hidden = !(canEdit && state.sample);
+    renderPublic();
+  }
+
+  /* ---------- saving: the page rebuilds itself and publishes ---------- */
+  function jsonBlock(id, obj) {
+    return '<script type="application/json" id="' + id + '">' + JSON.stringify(obj).replace(/</g, '\\u003c') + '<\/script>';
+  }
+  function resetCss() {
+    try {
+      var s = document.head.querySelector('style');
+      var css = s && s.textContent;
+      if (css && css.indexOf('safe-area-inset-top') > -1 && css.indexOf('[hidden]') > -1) return css;
+    } catch (e) {}
+    return ':root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}';
+  }
+  function buildDoc(nextState) {
+    return '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>' +
+      resetCss() + '</style></head><body>' + tpl.a + jsonBlock('hv-data', nextState) + jsonBlock('hv-tpl', tpl) + tpl.b + '</body></html>';
+  }
+
+  function save() {
+    if (saving) return;
+    var items = [], bad = null;
+    draft.forEach(function (p) {
+      var name = (p.name || '').trim(), cat = (p.category || '').trim(), desc = (p.desc || '').trim();
+      if (!name && !cat && !desc && p.price == null) return;
+      if (!name) { bad = bad || p; return; }
+      items.push({ id: p.id, name: name, category: cat, desc: desc, price: (typeof p.price === 'number' && isFinite(p.price) && p.price >= 0) ? Math.round(p.price) : null, inStock: p.inStock !== false, kind: kindOf(p), pack: (p.pack || '').trim(), about: (p.about || '').trim(), benefits: (p.benefits || '').trim(), ingredients: (p.ingredients || '').trim(), storage: (p.storage || '').trim(), use: (p.use || '').trim(), care: (p.care || '').trim(), image: (p.image || '').trim() });
+    });
+    if (bad) { setMsg('Every product needs a name. Add one or remove the empty product.', true); $('e-name-' + bad.id).focus(); return; }
+    if (!artifactNs || !tpl) { setMsg('Saving is not available in this view. Open the page from your own account to edit it.', true); return; }
+
+    saving = true; $('save-btn').disabled = true; setMsg('Saving…');
+    var next = { sample: false, products: items };
+    var doc;
+    try { doc = buildDoc(next); } catch (e) { saving = false; $('save-btn').disabled = false; setMsg('Something went wrong preparing the page. Your changes are still here, try again.', true); return; }
+    artifactNs.publish(doc).then(function () {
+      setMsg('Saved. The page is reloading.');
+    }, function (err) {
+      saving = false; $('save-btn').disabled = false;
+      var code = err && err.code;
+      if (code === 'conflict') setMsg('Someone saved a newer version first. The page is reloading with their changes. Make your edits again.', true);
+      else if (code === 'not_writer' || code === 'not_granted' || code === 'consent_required') setMsg('You can view this page but not change it. Ask the owner for edit access.', true);
+      else if (code === 'rate_limited') setMsg('You are saving too fast. Wait a moment and try again.', true);
+      else if (code === 'too_large') setMsg('The page is too large to save. Remove some products or shorten descriptions.', true);
+      else setMsg('The page could not be saved. Your changes are still here, try again.', true);
+    });
+  }
+
+  $('edit-btn').addEventListener('click', openEditor);
+  $('cancel-btn').addEventListener('click', closeEditor);
+  $('save-btn').addEventListener('click', save);
+  $('add-btn').addEventListener('click', function () {
+    var p = { id: newId(), name: '', category: '', desc: '', price: null, inStock: true, kind: 'box', pack: '', about: '', benefits: '', ingredients: '', storage: '', use: '', care: '', image: '' };
+    draft.push(p);
+    renderEditor('e-name-' + p.id);
+  });
+
+  wireWhatsApp();
+  wireSocial();
+  renderPublic();
+  route();
+
+  /* ---------- who is looking: only people who can edit see the editor ---------- */
+  (function init() {
+    if (!window.claude || !window.claude.use || !tpl) return;
+    Promise.all([window.claude.use('user'), window.claude.use('artifact')]).then(function (r) {
+      var user = r[0]; artifactNs = r[1];
+      if (!user || !artifactNs) return;
+      return user.canEdit().then(function (ok) {
+        if (!ok) return;
+        canEdit = true;
+        $('owner-bar').hidden = false;
+        $('sample-note').hidden = !state.sample;
+        renderPublic();
+      });
+    }).catch(function () {});
+  })();
+})();
+</script>
+</body></html>

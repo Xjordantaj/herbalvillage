@@ -1,0 +1,14 @@
+Put your product pictures in this folder.
+Pictures already included are used by the website automatically.
+These products still use a placeholder drawing until you add a picture with exactly this file name:
+  coughsyrup.jpg            (Sangoma Heral cough mixture)
+  wild dates.jpg            (Pure Mpirivuma - wild dates)
+  Sangoma power mix.jpg     (Sangoma power mix, powdered)
+  paracetamol-tablets.jpg   (Sangoma dental care)
+  ibuprofen-tablets.jpg     (Gyno Formula)
+  nasal-spray.jpg           (Pure Rose Mary - women care)
+  moringa-powder.jpg        (Moringa leaf powder)
+  petroleum-jelly.jpg       (Petroleum jelly)
+  gauze-and-tape.jpg        (Blackstone)
+Best picture size: 800 x 600 pixels (4:3), JPG.
+You can also change any picture path in index.html: open it in a text editor and look at the PRODUCT LIST near the top ("image" field).
